@@ -53,6 +53,7 @@ window.initJonnittoGoogleMaps = function() {
 			address: address
 		}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
+				element.className += ' init';
 				callback(results[0].geometry.location);
 			} else if (document.body.className.indexOf('neos-backend') > -1) {
 				// We are in the backend of Neos
@@ -151,7 +152,6 @@ window.initJonnittoGoogleMaps = function() {
 		var map = object.Map.elements[m];
 
 		if (map.className.indexOf('init') === -1) {
-			map.className += ' init';
 			getLocation(map, renderMap);
 		}
 	}
@@ -160,7 +160,6 @@ window.initJonnittoGoogleMaps = function() {
 		var streetview = object.Streetview.elements[s];
 
 		if (streetview.className.indexOf('init') === -1) {
-			streetview.className += ' init';
 			getLocation(streetview, renderStreetview);
 		}
 	}
