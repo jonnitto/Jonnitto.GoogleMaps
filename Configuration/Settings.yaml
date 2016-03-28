@@ -1,0 +1,22 @@
+TYPO3:
+  Neos:
+    typoScript:
+      autoInclude:
+        'Jonnitto.GoogleMaps': TRUE
+    userInterface:
+      translation:
+        autoInclude:
+          'Jonnitto.GoogleMaps': ['NodeTypes/*']
+
+Jonnitto:
+  GoogleMaps:
+    APIKey:
+    includeGoogleAPI: TRUE
+    includeFunction: TRUE
+    includeBackendJS: TRUE
+    includeCSS: TRUE
+    googleAPI: '//maps.google.com/maps/api/js?key={APIKey}&callback=initJonnittoGoogleMaps'
+    MapAndStreetview:
+      wrapper: row
+      map: col-md-6
+      streetview: col-md-6

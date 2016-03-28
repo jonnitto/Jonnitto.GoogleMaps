@@ -1,0 +1,23 @@
+{
+    "name": "jonnitto/googlemaps",
+    "type": "typo3-flow-plugin",
+    "description": "Google Maps as Content Element",
+    "version": "2.1.0",
+    "require": {
+        "typo3/neos": "2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Jonnitto\\GoogleMaps": "Classes"
+        }
+
+    },
+    "authors": [
+        {
+            "name": "Jon Uhlmann",
+            "email": "me@jonnitto.ch",
+            "homepage": "https://twitter.com/jonnitto",
+            "role": "Developer"
+        }
+    ]
+}

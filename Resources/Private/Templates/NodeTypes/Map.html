@@ -1,0 +1,18 @@
+<f:if condition="{APIKey}">
+	<f:then>
+		<div{attributes -> f:format.raw()}>
+			<f:if condition="{hasMap}">
+				<div{mapAttributes -> f:format.raw()}><f:if condition="{title}">
+					<strong><f:format.nl2br>{title -> f:format.raw()}</f:format.nl2br></strong><br></f:if><f:if condition="{text}">
+					<f:format.nl2br>{text -> f:format.raw()}</f:format.nl2br>
+				</f:if></div>
+			</f:if>
+			<f:if condition="{hasStreetview}">
+				<div{streetViewAttributes -> f:format.raw()}></div>
+			</f:if>
+		</div>
+	</f:then>
+	<f:else>
+		<p>{f:translate(id: 'noAPIKey' package: 'Jonnitto.GoogleMaps')  -> f:format.raw()}</p>
+	</f:else>
+</f:if>

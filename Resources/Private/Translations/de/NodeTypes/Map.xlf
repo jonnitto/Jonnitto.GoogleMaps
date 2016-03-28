@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" product-name="Jonnitto.GoogleMaps" source-language="de" datatype="plaintext">
+		<body>
+			<trans-unit id="ui.label" xml:space="preserve">
+				<source>Google Maps / Streetview</source>
+			</trans-unit>
+			<trans-unit id="groups.coordinates" xml:space="preserve">
+				<source>Karte</source>
+			</trans-unit>
+			<trans-unit id="groups.infobox" xml:space="preserve">
+				<source>Informationsbox</source>
+			</trans-unit>
+			<trans-unit id="groups.streetview" xml:space="preserve">
+				<source>Streetview</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

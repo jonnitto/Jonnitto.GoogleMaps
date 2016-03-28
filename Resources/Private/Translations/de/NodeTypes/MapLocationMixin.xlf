@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" product-name="Jonnitto.GoogleMaps" source-language="de" datatype="plaintext">
+		<body>
+			<trans-unit id="properties.mapLocation" xml:space="preserve">
+				<source>Standort</source>
+			</trans-unit>
+			<trans-unit id="properties.mapLocation.ui.help.message" xml:space="preserve">
+				<source>Standort entweder als Koordinaten (Breitengrad, Längengrad) oder als Adresse eingeben.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

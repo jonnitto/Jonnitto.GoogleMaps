@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" product-name="Jonnitto.GoogleMaps" source-language="de" datatype="plaintext">
+		<body>
+			<trans-unit id="properties.title" xml:space="preserve">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="properties.text" xml:space="preserve">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="properties.showinfo" xml:space="preserve">
+				<source>Zeige geöffnetes Infofenster</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
