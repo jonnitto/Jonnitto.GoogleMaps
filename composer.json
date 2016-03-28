@@ -2,7 +2,8 @@
     "name": "jonnitto/googlemaps",
     "type": "typo3-flow-plugin",
     "description": "Google Maps as Content Element",
-    "version": "2.1.0",
+    "version": "2.1.1",
+    "license": "MIT",
     "require": {
         "typo3/neos": "2.*"
     },
@@ -19,5 +20,8 @@
             "homepage": "https://twitter.com/jonnitto",
             "role": "Developer"
         }
-    ]
+    ],
+    "extra": {
+        "marketplace-account": "me@jonnitto.ch"
+    }
 }
