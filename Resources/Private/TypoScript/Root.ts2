@@ -6,8 +6,8 @@ prototype(TYPO3.Neos:Page) {
 			href = TYPO3.TypoScript:ResourceUri {
 				path = 'resource://Jonnitto.GoogleMaps/Public/Main.css'
 			}
-			@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.includeCss') == 'TRUE' && (q(node).find('[instanceof Jonnitto.GoogleMaps:Map]').is() || node.context.inBackend)}
 		}
+		@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.includeCss') == 'TRUE' && (q(node).find('[instanceof Jonnitto.GoogleMaps:Map]').is() || node.context.inBackend)}
 	}
 
 	body.javascripts {
@@ -22,6 +22,7 @@ prototype(TYPO3.Neos:Page) {
 		googleMapsApi = TYPO3.TypoScript:Tag {
 			tagName = 'script'
 			attributes.src = ${String.replace(Configuration.setting('Jonnitto.GoogleMaps.googleAPI'), '{APIKey}', Configuration.setting('Jonnitto.GoogleMaps.APIKey'))}
+			attributes.id = 'jonnitto-googlemaps-api'
 			@position = 'after googleMapsFunction'
 			@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.APIKey') && Configuration.setting('Jonnitto.GoogleMaps.includeGoogleAPI') && (q(node).find('[instanceof Jonnitto.GoogleMaps:Map]').is() || node.context.inBackend)}
 		}
