@@ -42,8 +42,8 @@ prototype(Jonnitto.GoogleMaps:Map) < prototype(TYPO3.Neos:Content) {
 	hasMap = ${String.trim(q(node).property('mapLocation')) ? true : false}
 	hasStreetview = ${String.trim(q(node).property('streetviewLocation')) ? true : false}
 
-	@override.hasMapAndStreet = ${this.hasMap && this.hasStreetview}
-	@override.configuration = ${Configuration.setting('Jonnitto.GoogleMaps.MapAndStreetview')}
+	@context.hasMapAndStreet = ${this.hasMap && this.hasStreetview}
+	@context.configuration = ${Configuration.setting('Jonnitto.GoogleMaps.MapAndStreetview')}
 
 	attributes {
 		class = TYPO3.TypoScript:RawArray {
