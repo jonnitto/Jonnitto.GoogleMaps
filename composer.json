@@ -2,7 +2,7 @@
     "name": "jonnitto/googlemaps",
     "type": "typo3-flow-plugin",
     "description": "Google Maps as Content Element",
-    "version": "2.1.3",
+    "version": "2.1.4",
     "license": "MIT",
     "require": {
         "typo3/neos": "2.*"
@@ -22,6 +22,10 @@
         }
     ],
     "extra": {
-        "marketplace-account": "me@jonnitto.ch"
+        "marketplace-account": "me@jonnitto.ch",
+        "installer-name": "Jonnitto.GoogleMaps",
+        "neos": {
+            "package-key": "Jonnitto.GoogleMaps"
+        }
     }
 }
