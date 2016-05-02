@@ -66,8 +66,13 @@ window.initJonnittoGoogleMaps = function() {
 	var renderMap = function(location) {
 		var mapOptions = object.Map.options;
 		var zoom = getNumber(map, 'zoom');
+		var content = map.content || null;
+		if (content === null) {
+			content = map.innerHTML.replace(/^\s+|\s+$/g,'') || false;
+			map.content = content;
+		}
 		var storage = {
-			content : map.innerHTML,
+			content : content,
 			LatLng  : location,
 			lat : location.lat(),
 			lng : location.lng()
