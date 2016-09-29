@@ -3,7 +3,7 @@
     "type": "typo3-flow-plugin",
     "description": "Google Maps as Content Element",
     "keywords": ["flow", "neos", "map", "googlemaps", "contentelement"],
-    "version": "2.1.5",
+    "version": "2.1.6",
     "license": "MIT",
     "require": {
         "typo3/neos": "2.*"
