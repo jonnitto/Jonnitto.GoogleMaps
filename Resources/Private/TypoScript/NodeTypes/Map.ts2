@@ -1,0 +1,38 @@
+prototype(GM:Map) < prototype(Content) {
+	APIKey = ${Configuration.setting('Jonnitto.GoogleMaps.APIKey')}
+	hasMap = ${String.trim(q(node).property('mapLocation')) ? true : false}
+	hasStreetview = ${String.trim(q(node).property('streetviewLocation')) ? true : false}
+
+	@context.hasMapAndStreet = ${this.hasMap && this.hasStreetview}
+	@context.configuration = ${Configuration.setting('Jonnitto.GoogleMaps.MapAndStreetview')}
+
+	attributes {
+		class = Fusion:RawArray {
+			row = ${hasMapAndStreet ? configuration.wrapper : false}
+		}
+	}
+
+	mapAttributes = Fusion:Attributes {
+		class = Fusion:RawArray {
+			google = 'google-map'
+			col = ${hasMapAndStreet ? configuration.map : false}
+		}
+		data-location = ${String.trim(q(node).property('mapLocation'))}
+		data-zoom = ${q(node).property('zoom')}
+		data-showinfo = ${q(node).property('showinfo')}
+	}
+
+
+	streetViewAttributes = Fusion:Attributes {
+		class = Fusion:RawArray {
+			google = 'google-streetview'
+			col = ${hasMapAndStreet ? configuration.streetview : false}
+		}
+		data-location = ${String.trim(q(node).property('streetviewLocation'))}
+		data-heading = ${q(node).property('heading')}
+		data-pitch = ${q(node).property('pitch')}
+	}
+
+	title = ${q(node).property('title')}
+	text = ${q(node).property('text')}
+}

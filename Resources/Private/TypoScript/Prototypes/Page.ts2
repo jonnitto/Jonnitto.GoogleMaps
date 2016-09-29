@@ -1,0 +1,38 @@
+prototype(Page) {
+	head.googleMaps = Fusion:Tag {
+		tagName = 'link'
+		attributes {
+			rel = 'stylesheet'
+			href = Fusion:ResourceUri {
+				path = 'resource://Jonnitto.GoogleMaps/Public/Main.css'
+			}
+		}
+		@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.includeCss') == 'TRUE' && (q(node).find('[instanceof Jonnitto.GoogleMaps:Map]').is() || node.context.inBackend)}
+	}
+
+	body.javascripts {
+		googleMapsFunction = Fusion:Tag {
+			tagName = 'script'
+			attributes.src = Fusion:ResourceUri {
+				path = 'resource://Jonnitto.GoogleMaps/Public/Main.js'
+			}
+			@position = 'end 100'
+			@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.includeFunction') && (q(node).find('[instanceof Jonnitto.GoogleMaps:Map]').is() || node.context.inBackend)}
+		}
+		googleMapsApi = Fusion:Tag {
+			tagName = 'script'
+			attributes.src = ${String.replace(Configuration.setting('Jonnitto.GoogleMaps.googleAPI'), '{APIKey}', Configuration.setting('Jonnitto.GoogleMaps.APIKey'))}
+			attributes.id = 'jonnitto-googlemaps-api'
+			@position = 'after googleMapsFunction'
+			@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.APIKey') && Configuration.setting('Jonnitto.GoogleMaps.includeGoogleAPI') && (q(node).find('[instanceof Jonnitto.GoogleMaps:Map]').is() || node.context.inBackend)}
+		}
+		googleMapsBackend = Fusion:Tag {
+			tagName = 'script'
+			attributes.src = Fusion:ResourceUri {
+				path = 'resource://Jonnitto.GoogleMaps/Public/Backend.js'
+			}
+			@position = 'after googleMapsApi'
+			@if.isActiveAndIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.includeBackendJS') && node.context.inBackend}
+		}
+	}
+}
