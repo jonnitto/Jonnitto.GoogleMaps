@@ -2,7 +2,7 @@ TYPO3:
   Neos:
     typoScript:
       autoInclude:
-        'Jonnitto.GoogleMaps': TRUE
+        'Jonnitto.GoogleMaps': true
     userInterface:
       translation:
         autoInclude:
@@ -11,10 +11,10 @@ TYPO3:
 Jonnitto:
   GoogleMaps:
     APIKey:
-    includeGoogleAPI: TRUE
-    includeFunction: TRUE
-    includeBackendJS: TRUE
-    includeCSS: TRUE
+    includeGoogleAPI: true
+    includeFunction: true
+    includeBackendJS: true
+    includeCSS: true
     googleAPI: '//maps.google.com/maps/api/js?key={APIKey}&callback=initJonnittoGoogleMaps'
     MapAndStreetview:
       wrapper: row

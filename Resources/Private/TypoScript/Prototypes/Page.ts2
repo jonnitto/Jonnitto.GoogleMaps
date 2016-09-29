@@ -7,7 +7,7 @@ prototype(Page) {
 				path = 'resource://Jonnitto.GoogleMaps/Public/Main.css'
 			}
 		}
-		@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.includeCss') == 'TRUE' && (q(node).find('[instanceof Jonnitto.GoogleMaps:Map]').is() || node.context.inBackend)}
+		@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.includeCSS') && (q(node).find('[instanceof Jonnitto.GoogleMaps:Map]').is() || node.context.inBackend)}
 	}
 
 	body.javascripts {
