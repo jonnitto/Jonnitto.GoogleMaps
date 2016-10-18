@@ -61,7 +61,7 @@ window.initJonnittoGoogleMaps = function() {
 
 	function getLocation(element, callback) {
 		var address = element.getAttribute('data-location');
-		var split = address.split();
+		var split = address.split(',');
 		var coordinates;
 
 		function successful(location) {
@@ -160,7 +160,7 @@ window.initJonnittoGoogleMaps = function() {
 			})(storage);
 		}
 		// jshint loopfunc:false
-	};
+	}
 
 	function renderStreetview(location) {
 		var streetStorage = object.Streetview.options;
@@ -170,7 +170,7 @@ window.initJonnittoGoogleMaps = function() {
 			pitch: getNumber(streetview, 'pitch') || 0
 		};
 		new google.maps.StreetViewPanorama(streetview, streetStorage);
-	};
+	}
 
 	for (var key in object) {
 		var num = object[key].elements.length;
