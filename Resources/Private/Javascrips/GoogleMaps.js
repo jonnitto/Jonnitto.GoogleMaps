@@ -25,45 +25,82 @@ window.initJonnittoGoogleMaps = function() {
 		}
 	};
 
-	var extend = function(object, inject) {
+	// Check if String is a Float
+	function isFloat(val) {
+		var floatRegex = /^-?\d+(?:[.,]\d*?)?$/;
+		if (!floatRegex.test(val)) {
+			return false;
+		}
+		val = parseFloat(val);
+		if (isNaN(val)) {
+			return false;
+		}
+		return true;
+	}
+
+	function extend(object, inject) {
 		for (var key in inject) {
 			if (inject.hasOwnProperty(key)) {
 				object[key] = inject[key];
 			}
 		}
 		return object;
-	};
+	}
 
-	var getNumber = function(element, value) {
+	function getNumber(element, value) {
 		var number = parseInt(element.getAttribute('data-' + value));
 		if (typeof number === 'number' && number) {
 			return number;
 		}
 		return false;
-	};
+	}
 
-	var hasData = function(element, value) {
+	function hasData(element, value) {
 		return element.getAttribute('data-' + value) !== null;
-	};
+	}
 
-	var getLocation = function(element, callback) {
+	function getLocation(element, callback) {
 		var address = element.getAttribute('data-location');
-		var geocoder = new google.maps.Geocoder();
-		geocoder.geocode({
-			address: address
-		}, function(results, status) {
-			if (status == google.maps.GeocoderStatus.OK) {
-				element.className += ' init';
-				callback(results[0].geometry.location);
-			} else if (document.body.className.indexOf('neos-backend') > -1) {
-				// We are in the backend of Neos
-				alert('Geocode was not successful for the following reason: ' + status);
-			}
-			return false;
-		});
-	};
+		var split = address.split();
+		var coordinates;
 
-	var renderMap = function(location) {
+		function successful(location) {
+			element.className += ' init';
+			callback(location);
+		}
+
+		function failed(status) {
+			if (document.body.className.indexOf('neos-backend') > -1) {
+				// We are in the backend of Neos
+				var sentence = 'Geocode was not successful';
+				if (status) {
+					alert(sentence + ' for the following reason: ' + status);
+				} else {
+					alert(sentence);
+				}
+			}
+		}
+
+		if (split.length == 2 && isFloat(split[0]) && isFloat(split[1])) {
+			// Input are coordinates
+			coordinates = new google.maps.LatLng(split[0], split[1]);
+			successful(coordinates);
+		} else {
+			coordinates = new google.maps.Geocoder();
+			coordinates.geocode({
+				address: address
+			}, function(results, status) {
+				if (status == google.maps.GeocoderStatus.OK) {
+					successful(results[0].geometry.location);
+				} else {
+					failed(status);
+				}
+				return false;
+			});
+		}
+	}
+
+	function renderMap(location) {
 		var mapOptions = object.Map.options;
 		var zoom = getNumber(map, 'zoom');
 		var content = map.content || null;
@@ -125,7 +162,7 @@ window.initJonnittoGoogleMaps = function() {
 		// jshint loopfunc:false
 	};
 
-	var renderStreetview = function(location) {
+	function renderStreetview(location) {
 		var streetStorage = object.Streetview.options;
 		streetStorage.position = location;
 		streetStorage.pov = {

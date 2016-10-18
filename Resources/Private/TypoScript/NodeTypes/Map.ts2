@@ -3,13 +3,13 @@ prototype(GM:Map) < prototype(Content) {
 	hasMap = ${String.trim(q(node).property('mapLocation')) ? true : false}
 	hasStreetview = ${String.trim(q(node).property('streetviewLocation')) ? true : false}
 
-	@context.hasMapAndStreet = ${this.hasMap && this.hasStreetview}
-	@context.configuration = ${Configuration.setting('Jonnitto.GoogleMaps.MapAndStreetview')}
+	@context {
+		hasMapAndStreet = ${this.hasMap && this.hasStreetview}
+		configuration = ${Configuration.setting('Jonnitto.GoogleMaps.MapAndStreetview')}
+	}
 
-	attributes {
-		class = Fusion:RawArray {
-			row = ${hasMapAndStreet ? configuration.wrapper : false}
-		}
+	attributes.class = Fusion:RawArray {
+		row = ${hasMapAndStreet ? configuration.wrapper : false}
 	}
 
 	mapAttributes = Fusion:Attributes {
