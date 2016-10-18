@@ -16,7 +16,10 @@ Jonnitto:
     includeBackendJS: true
     includeCSS: true
     googleAPI: '//maps.google.com/maps/api/js?key={APIKey}&callback=initJonnittoGoogleMaps'
-    MapAndStreetview:
-      wrapper: row
-      map: col-md-6
-      streetview: col-md-6
+    cssClasses:
+      map: jonnitto-googlemaps-mapview
+      streetview: jonnitto-googlemaps-streetview
+      both:
+        wrapper: jonnitto-googlemaps-both-wrapper
+        map: jonnitto-googlemaps-both-mapview
+        streetview: jonnitto-googlemaps-both-streetview

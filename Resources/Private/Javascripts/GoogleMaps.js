@@ -4,11 +4,12 @@
 // To include functions, use GoogleMapsFunction
 window.initJonnittoGoogleMaps = function() {
 	var feedback = [];
+	var initClass = 'jonnitto-googlemaps-init';
 
 	// We store eveything in one Object, so it's easier to inlclude functions
 	var object = {
 		Map: {
-			elements: document.querySelectorAll('.google-map'),
+			elements: document.querySelectorAll('.jonnitto-googlemaps-mapview'),
 			options: {
 				zoom              : 15,
 				mapTypeControl    : true,
@@ -18,7 +19,7 @@ window.initJonnittoGoogleMaps = function() {
 			}
 		},
 		Streetview: {
-			elements: document.querySelectorAll('.google-streetview'),
+			elements: document.querySelectorAll('.jonnitto-googlemaps-streetview'),
 			options: {
 				scrollwheel: false
 			}
@@ -65,7 +66,7 @@ window.initJonnittoGoogleMaps = function() {
 		var coordinates;
 
 		function successful(location) {
-			element.className += ' init';
+			element.className += ' ' + initClass;
 			callback(location);
 		}
 
@@ -81,9 +82,9 @@ window.initJonnittoGoogleMaps = function() {
 			}
 		}
 
-		if (split.length == 2 && isFloat(split[0]) && isFloat(split[1])) {
+		if (split.length == 2 && isFloat(split[0].trim()) && isFloat(split[1].trim())) {
 			// Input are coordinates
-			coordinates = new google.maps.LatLng(split[0], split[1]);
+			coordinates = new google.maps.LatLng(split[0].trim(), split[1].trim());
 			successful(coordinates);
 		} else {
 			coordinates = new google.maps.Geocoder();
@@ -160,7 +161,7 @@ window.initJonnittoGoogleMaps = function() {
 			})(storage);
 		}
 		// jshint loopfunc:false
-	}
+	};
 
 	function renderStreetview(location) {
 		var streetStorage = object.Streetview.options;
@@ -170,7 +171,7 @@ window.initJonnittoGoogleMaps = function() {
 			pitch: getNumber(streetview, 'pitch') || 0
 		};
 		new google.maps.StreetViewPanorama(streetview, streetStorage);
-	}
+	};
 
 	for (var key in object) {
 		var num = object[key].elements.length;
@@ -193,7 +194,7 @@ window.initJonnittoGoogleMaps = function() {
 	for (var m = 0; m < object.Map.index; m++) {
 		var map = object.Map.elements[m];
 
-		if (map.className.indexOf('init') === -1) {
+		if (map.className.indexOf(initClass) === -1) {
 			getLocation(map, renderMap);
 		}
 	}
@@ -201,7 +202,7 @@ window.initJonnittoGoogleMaps = function() {
 	for (var s = 0; s < object.Streetview.index; s++) {
 		var streetview = object.Streetview.elements[s];
 
-		if (streetview.className.indexOf('init') === -1) {
+		if (streetview.className.indexOf(initClass) === -1) {
 			getLocation(streetview, renderStreetview);
 		}
 	}

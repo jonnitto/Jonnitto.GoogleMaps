@@ -1,1 +1,1 @@
-!function(){for(var e=["ContentModuleLoaded","PageLoaded","NodeCreated"],o=0;o<e.length;o++)document.addEventListener("Neos."+e[o],initJonnittoGoogleMaps)}();
+(function(){for(var e=["ContentModuleLoaded","PageLoaded","NodeCreated"],o=0;e.length>o;o++)document.addEventListener("Neos."+e[o],initJonnittoGoogleMaps)})();

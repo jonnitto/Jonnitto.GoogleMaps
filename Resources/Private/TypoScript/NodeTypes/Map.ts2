@@ -1,34 +1,45 @@
-prototype(GM:Map) < prototype(Content) {
-	APIKey = ${Configuration.setting('Jonnitto.GoogleMaps.APIKey')}
-	hasMap = ${String.trim(q(node).property('mapLocation')) ? true : false}
-	hasStreetview = ${String.trim(q(node).property('streetviewLocation')) ? true : false}
+prototype(GM:Map) {
+	configuration = ${Configuration.setting('Jonnitto.GoogleMaps')}
+	cssClasses = ${this.configuration.cssClasses}
+	APIKey = ${this.configuration.APIKey}
+	mapLocation = ${String.trim(q(node).property('mapLocation'))}
+	streetviewLocation = ${String.trim(q(node).property('streetviewLocation'))}
+
+	hasMap = ${this.mapLocation ? true : false}
+	hasStreetview = ${this.streetviewLocation ? true : false}
 
 	@context {
-		hasMapAndStreet = ${this.hasMap && this.hasStreetview}
-		configuration = ${Configuration.setting('Jonnitto.GoogleMaps.MapAndStreetview')}
+		configuration = ${this.configuration}
+		cssClasses = ${this.cssClasses}
+
+		mapLocation = ${this.mapLocation}
+		streetviewLocation = ${this.streetviewLocation}
+
+		hasMap = ${this.hasMap}
+		hasStreetview = ${this.hasStreetview}
+		hasMapAndStreet = ${this.mapLocation && this.streetviewLocation ? true : false}
 	}
 
 	attributes.class = Fusion:RawArray {
-		row = ${hasMapAndStreet ? configuration.wrapper : false}
+		both = ${hasMapAndStreet ? cssClasses.both.wrapper : false}
 	}
 
 	mapAttributes = Fusion:Attributes {
 		class = Fusion:RawArray {
-			google = 'google-map'
-			col = ${hasMapAndStreet ? configuration.map : false}
+			google = ${cssClasses.map}
+			both = ${hasMapAndStreet ? cssClasses.both.map : false}
 		}
-		data-location = ${String.trim(q(node).property('mapLocation'))}
+		data-location = ${mapLocation}
 		data-zoom = ${q(node).property('zoom')}
 		data-showinfo = ${q(node).property('showinfo')}
 	}
 
-
 	streetViewAttributes = Fusion:Attributes {
 		class = Fusion:RawArray {
-			google = 'google-streetview'
-			col = ${hasMapAndStreet ? configuration.streetview : false}
+			google = ${cssClasses.streetview}
+			both = ${hasMapAndStreet ? cssClasses.both.streetview : false}
 		}
-		data-location = ${String.trim(q(node).property('streetviewLocation'))}
+		data-location = ${streetviewLocation}
 		data-heading = ${q(node).property('heading')}
 		data-pitch = ${q(node).property('pitch')}
 	}

@@ -1,4 +1,8 @@
 prototype(Page) {
+	@context {
+		hasMapOnPage = ${q(documentNode).children('[instanceof TYPO3.Neos:ContentCollection]').find('[instanceof Jonnitto.GoogleMaps:Map]').is()}
+	}
+
 	head.googleMaps = Fusion:Tag {
 		tagName = 'link'
 		attributes {
@@ -7,7 +11,7 @@ prototype(Page) {
 				path = 'resource://Jonnitto.GoogleMaps/Public/Main.css'
 			}
 		}
-		@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.includeCSS') && (q(node).find('[instanceof Jonnitto.GoogleMaps:Map]').is() || node.context.inBackend)}
+		@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.includeCSS') && (hasMapOnPage || node.context.inBackend)}
 	}
 
 	body.javascripts {
@@ -17,14 +21,14 @@ prototype(Page) {
 				path = 'resource://Jonnitto.GoogleMaps/Public/Main.js'
 			}
 			@position = 'end 100'
-			@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.includeFunction') && (q(node).find('[instanceof Jonnitto.GoogleMaps:Map]').is() || node.context.inBackend)}
+			@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.includeFunction') && (hasMapOnPage || node.context.inBackend)}
 		}
 		googleMapsApi = Fusion:Tag {
 			tagName = 'script'
 			attributes.src = ${String.replace(Configuration.setting('Jonnitto.GoogleMaps.googleAPI'), '{APIKey}', Configuration.setting('Jonnitto.GoogleMaps.APIKey'))}
 			attributes.id = 'jonnitto-googlemaps-api'
 			@position = 'after googleMapsFunction'
-			@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.APIKey') && Configuration.setting('Jonnitto.GoogleMaps.includeGoogleAPI') && (q(node).find('[instanceof Jonnitto.GoogleMaps:Map]').is() || node.context.inBackend)}
+			@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.APIKey') && Configuration.setting('Jonnitto.GoogleMaps.includeGoogleAPI') && (hasMapOnPage || node.context.inBackend)}
 		}
 		googleMapsBackend = Fusion:Tag {
 			tagName = 'script'

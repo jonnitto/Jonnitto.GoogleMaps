@@ -1,0 +1,83 @@
+$jonnitto-googlemaps-width: 100% !default;
+$jonnitto-googlemaps-margin: 0 0 1.5rem !default;
+
+$jonnitto-googlemaps-height: 250px !default;
+$jonnitto-googlemaps-height-sm: 350px !default;
+$jonnitto-googlemaps-height-md: 450px !default;
+$jonnitto-googlemaps-height-lg: 550px !default;
+
+$jonnitto-googlemaps-sm-min: 768px !default;
+$jonnitto-googlemaps-md-min: 992px !default;
+$jonnitto-googlemaps-lg-min: 1200px !default;
+$jonnitto-googlemaps-color: #222 !default;
+
+$jonnitto-googlemaps-breakpoint: $jonnitto-googlemaps-md-min !default;
+
+.jonnitto-googlemaps-map {
+	margin: $jonnitto-googlemaps-margin;
+
+	.neos-backend & {
+		min-height: $jonnitto-googlemaps-height;
+
+		@media (min-width: $jonnitto-googlemaps-sm-min) {
+			min-height: $jonnitto-googlemaps-height-sm;
+		}
+
+		@media (min-width: $jonnitto-googlemaps-md-min) {
+			min-height: $jonnitto-googlemaps-height-md;
+		}
+
+		@media (min-width: $jonnitto-googlemaps-lg-min) {
+			min-height: $jonnitto-googlemaps-height-lg;
+		}
+	}
+}
+
+.jonnitto-googlemaps-streetview,
+.jonnitto-googlemaps-mapview {
+	visibility: hidden;
+	width: $jonnitto-googlemaps-width;
+	height: $jonnitto-googlemaps-height;
+
+	&.jonnitto-googlemaps-init {
+		visibility: visible;
+	}
+
+	@media (min-width: $jonnitto-googlemaps-sm-min) {
+		height: $jonnitto-googlemaps-height-sm;
+	}
+
+	@media (min-width: $jonnitto-googlemaps-md-min) {
+		height: $jonnitto-googlemaps-height-md;
+	}
+
+	@media (min-width: $jonnitto-googlemaps-lg-min) {
+		height: $jonnitto-googlemaps-height-lg;
+	}
+}
+
+.jonnitto-googlemaps-mapview {
+	color: $jonnitto-googlemaps-color;
+
+	img {
+		max-width: none;
+	}
+}
+
+@media (min-width: $jonnitto-googlemaps-breakpoint) {
+	.jonnitto-googlemaps-both-wrapper {
+		&::after {
+			content: '';
+			display: table;
+			clear: both;
+		}
+	}
+
+	.jonnitto-googlemaps-both-mapview,
+	.jonnitto-googlemaps-both-streetview {
+		position: relative;
+		min-height: 1px;
+		float: left;
+		width: 50%;
+	}
+}
