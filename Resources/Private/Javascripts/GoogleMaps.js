@@ -6,7 +6,7 @@ window.initJonnittoGoogleMaps = function() {
 	var feedback = [];
 	var initClass = 'jonnitto-googlemaps-init';
 
-	// We store eveything in one Object, so it's easier to inlclude functions
+	// We store eveything in one Object, so it's easier to include functions
 	var object = {
 		Map: {
 			elements: document.querySelectorAll('.jonnitto-googlemaps-mapview'),
