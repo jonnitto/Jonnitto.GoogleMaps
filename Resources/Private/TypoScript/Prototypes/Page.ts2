@@ -1,6 +1,6 @@
 prototype(Page) {
 	@context {
-		hasMapOnPage = ${q(documentNode).children('[instanceof TYPO3.Neos:ContentCollection]').find('[instanceof Jonnitto.GoogleMaps:Map]').is()}
+		hasMapOnPage = ${q(documentNode).children('[instanceof Neos.Neos:ContentCollection]').find('[instanceof Jonnitto.GoogleMaps:Map]').is()}
 	}
 
 	head.googleMaps = Fusion:Tag {
