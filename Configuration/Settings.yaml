@@ -16,11 +16,11 @@ Jonnitto:
         streetview: jonnitto-googlemaps-both-streetview
 Neos:
   Neos:
-    typoScript:
-      autoInclude:
-        Jonnitto.GoogleMaps: true
     userInterface:
       translation:
         autoInclude:
           Jonnitto.GoogleMaps:
             - 'NodeTypes/*'
+    fusion:
+      autoInclude:
+        Jonnitto.GoogleMaps: true
