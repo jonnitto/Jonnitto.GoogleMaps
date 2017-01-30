@@ -24,7 +24,7 @@
         inspector:
           group: coordinates
           position: 200
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             placeholder: i18n
             allowEmpty: TRUE
@@ -84,7 +84,7 @@
         inspector:
           group: infobox
           position: 100
-          editor: 'TYPO3.Neos/Inspector/Editors/TextAreaEditor'
+          editor: 'Neos.Neos/Inspector/Editors/TextAreaEditor'
     text:
       type: string
       ui:
@@ -93,7 +93,7 @@
         inspector:
           group: infobox
           position: 200
-          editor: 'TYPO3.Neos/Inspector/Editors/TextAreaEditor'
+          editor: 'Neos.Neos/Inspector/Editors/TextAreaEditor'
     showinfo:
       type: boolean
       defaultValue: FALSE
@@ -127,10 +127,10 @@
             group: streetview
             position: 300
         validation:
-          'TYPO3.Neos/Validation/NumberRangeValidator':
+          'Neos.Neos/Validation/NumberRangeValidator':
             minimum: 0
             maximum: 359
-          'TYPO3.Neos/Validation/NotEmptyValidator': []
+          'Neos.Neos/Validation/NotEmptyValidator': []
     pitch:
       type: integer
       defaultValue: 0
@@ -141,7 +141,7 @@
           group: streetview
           position: 400
       validation:
-        'TYPO3.Neos/Validation/NumberRangeValidator':
+        'Neos.Neos/Validation/NumberRangeValidator':
           minimum: -90
           maximum: 90
-        'TYPO3.Neos/Validation/NotEmptyValidator': []
+        'Neos.Neos/Validation/NotEmptyValidator': []

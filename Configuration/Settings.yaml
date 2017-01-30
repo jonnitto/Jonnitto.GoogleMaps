@@ -1,16 +1,7 @@
-TYPO3:
-  Neos:
-    typoScript:
-      autoInclude:
-        'Jonnitto.GoogleMaps': true
-    userInterface:
-      translation:
-        autoInclude:
-          'Jonnitto.GoogleMaps': ['NodeTypes/*']
 
 Jonnitto:
   GoogleMaps:
-    APIKey:
+    APIKey: null
     includeGoogleAPI: true
     includeFunction: true
     includeBackendJS: true
@@ -23,3 +14,13 @@ Jonnitto:
         wrapper: jonnitto-googlemaps-both-wrapper
         map: jonnitto-googlemaps-both-mapview
         streetview: jonnitto-googlemaps-both-streetview
+Neos:
+  Neos:
+    typoScript:
+      autoInclude:
+        Jonnitto.GoogleMaps: true
+    userInterface:
+      translation:
+        autoInclude:
+          Jonnitto.GoogleMaps:
+            - 'NodeTypes/*'

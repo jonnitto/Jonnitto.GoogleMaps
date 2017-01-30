@@ -1,7 +1,7 @@
 
 'Jonnitto.GoogleMaps:Map':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
     'Jonnitto.GoogleMaps:MapLocationMixin': true
     'Jonnitto.GoogleMaps:ZoomMixin': true
     'Jonnitto.GoogleMaps:InfoboxMixin': true
