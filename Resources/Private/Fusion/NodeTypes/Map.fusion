@@ -1,3 +1,5 @@
+// Namespaces are defined in "Root.fusion"
+
 prototype(GM:Map) {
 	configuration = ${Configuration.setting('Jonnitto.GoogleMaps')}
 	cssClasses = ${this.configuration.cssClasses}

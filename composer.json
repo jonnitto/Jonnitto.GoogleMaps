@@ -1,6 +1,6 @@
 {
     "name": "jonnitto/googlemaps",
-    "type": "typo3-flow-plugin",
+    "type": "neos-plugin",
     "description": "Google Maps as Content Element",
     "keywords": [
         "flow",
@@ -9,14 +9,13 @@
         "googlemaps",
         "contentelement"
     ],
-    "version": "2.2.0",
     "license": "MIT",
     "require": {
-        "typo3/neos": "2.*"
+        "typo3/neos": "3.*"
     },
     "autoload": {
-        "psr-0": {
-            "Jonnitto\\GoogleMaps": "Classes"
+        "psr-4": {
+            "Jonnitto\\GoogleMaps\\": "Classes"
         }
     },
     "authors": [

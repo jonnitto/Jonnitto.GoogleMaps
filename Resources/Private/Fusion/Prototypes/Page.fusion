@@ -1,3 +1,5 @@
+// Namespaces are defined in "Root.fusion"
+
 prototype(Page) {
 	@context {
 		hasMapOnPage = ${q(documentNode).children('[instanceof Neos.Neos:ContentCollection]').find('[instanceof Jonnitto.GoogleMaps:Map]').is()}
