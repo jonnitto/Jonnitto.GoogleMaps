@@ -3,7 +3,7 @@
 	<file original="" product-name="Jonnitto.GoogleMaps" source-language="de" datatype="plaintext">
 		<body>
 			<trans-unit id="noAPIKey" xml:space="preserve">
-				<source><![CDATA[Bitte setzen Sie den API Key in den Settings. Dieser kann in der <a href="https://console.developers.google.com/apis/api/maps_backend" target="_blank">Google Developers Console</a> erstellt werden.]]></source>
+				<source><![CDATA[Bitte setzen Sie den API Key in den Settings. Dieser kann in der <a style="{style}" href="{link}" target="_blank">Google Developers Console</a> erstellt werden.]]></source>
 			</trans-unit>
 		</body>
 	</file>

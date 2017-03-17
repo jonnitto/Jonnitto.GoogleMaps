@@ -13,6 +13,8 @@
 		</div>
 	</f:then>
 	<f:else>
-		<p>{f:translate(id: 'noAPIKey', package: 'Jonnitto.GoogleMaps')  -> f:format.raw()}</p>
+		<p style="background:#f0ad4e;color:#fff;box-shadow:0 1px 10px rgba(0,0,0,0.1);padding:5% 12px;margin:30px auto;text-align:center;text-decoration:none;outline:none;font-size:20px;">
+			<f:format.raw><f:translate id="noAPIKey" package="Jonnitto.GoogleMaps" arguments="{style:'color:#fff;text-decoration:underline',link:'https://console.developers.google.com/apis/api/maps_backend'}" /></f:format.raw>
+		</p>
 	</f:else>
 </f:if>

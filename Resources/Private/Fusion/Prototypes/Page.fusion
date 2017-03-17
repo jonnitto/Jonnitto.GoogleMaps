@@ -1,10 +1,6 @@
 // Namespaces are defined in "Root.fusion"
 
 prototype(Page) {
-	@context {
-		hasMapOnPage = ${q(documentNode).children('[instanceof Neos.Neos:ContentCollection]').find('[instanceof Jonnitto.GoogleMaps:Map]').is()}
-	}
-
 	head.googleMaps = Fusion:Tag {
 		tagName = 'link'
 		attributes {
@@ -13,7 +9,9 @@ prototype(Page) {
 				path = 'resource://Jonnitto.GoogleMaps/Public/Main.css'
 			}
 		}
-		@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.includeCSS') && (hasMapOnPage || node.context.inBackend)}
+		@if.render = GM:RenderMap {
+			include = ${Configuration.setting('Jonnitto.GoogleMaps.includeCSS')}
+		}
 	}
 
 	body.javascripts {
@@ -23,14 +21,19 @@ prototype(Page) {
 				path = 'resource://Jonnitto.GoogleMaps/Public/Main.js'
 			}
 			@position = 'end 100'
-			@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.includeFunction') && (hasMapOnPage || node.context.inBackend)}
+			@if.render = GM:RenderMap {
+				include = ${Configuration.setting('Jonnitto.GoogleMaps.includeFunction')}
+			}
 		}
 		googleMapsApi = Fusion:Tag {
 			tagName = 'script'
 			attributes.src = ${String.replace(Configuration.setting('Jonnitto.GoogleMaps.googleAPI'), '{APIKey}', Configuration.setting('Jonnitto.GoogleMaps.APIKey'))}
 			attributes.id = 'jonnitto-googlemaps-api'
 			@position = 'after googleMapsFunction'
-			@if.isActiveAndHasMapOrIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.APIKey') && Configuration.setting('Jonnitto.GoogleMaps.includeGoogleAPI') && (hasMapOnPage || node.context.inBackend)}
+			@if.render = GM:RenderMap {
+				include = ${Configuration.setting('Jonnitto.GoogleMaps.includeGoogleAPI')}
+				additionalCheck = ${Configuration.setting('Jonnitto.GoogleMaps.APIKey')}
+			}
 		}
 		googleMapsBackend = Fusion:Tag {
 			tagName = 'script'
@@ -38,7 +41,10 @@ prototype(Page) {
 				path = 'resource://Jonnitto.GoogleMaps/Public/Backend.js'
 			}
 			@position = 'after googleMapsApi'
-			@if.isActiveAndIsBackend = ${Configuration.setting('Jonnitto.GoogleMaps.includeBackendJS') && node.context.inBackend}
+			@if.render = GM:RenderMap {
+				include = ${Configuration.setting('Jonnitto.GoogleMaps.includeBackendJS')}
+				live = false
+			}
 		}
 	}
 }
