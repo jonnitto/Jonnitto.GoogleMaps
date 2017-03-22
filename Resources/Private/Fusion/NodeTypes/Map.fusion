@@ -10,7 +10,10 @@ prototype(GM:Map) {
 	hasMap = ${this.mapLocation ? true : false}
 	hasStreetview = ${this.streetviewLocation ? true : false}
 
-	@if.showElement = ${this.hasMap || this.hasStreetview || node.context.inBackend ? true : false}
+	@if {
+		hasContent = ${this.hasMap || this.hasStreetview || node.context.inBackend ? true : false}
+		hasAPI = ${this.APIKey || node.context.inBackend ? true : false}
+	}
 
 	@context {
 		configuration = ${this.configuration}
