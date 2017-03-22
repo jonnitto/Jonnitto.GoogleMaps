@@ -2,10 +2,10 @@
 
 prototype(GM:RenderMap) < prototype(Fusion:Value) {
 	include = true
-	additionalCheck = true
 
+	api = ${Configuration.setting('Jonnitto.GoogleMaps.APIKey') ? true : false}
 	live = ${q(documentNode).children('[instanceof Neos.Neos:ContentCollection]').find('[instanceof Jonnitto.GoogleMaps:Map]').is()}
 	inBackend = ${node.context.inBackend}
 
-	value = ${(this.additionalCheck && this.include && (this.live || this.inBackend)) ? true : false}
+	value = ${(this.api && this.include && (this.live || this.inBackend)) ? true : false}
 }

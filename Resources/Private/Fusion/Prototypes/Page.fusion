@@ -32,7 +32,6 @@ prototype(Page) {
 			@position = 'after googleMapsFunction'
 			@if.render = GM:RenderMap {
 				include = ${Configuration.setting('Jonnitto.GoogleMaps.includeGoogleAPI')}
-				additionalCheck = ${Configuration.setting('Jonnitto.GoogleMaps.APIKey')}
 			}
 		}
 		googleMapsBackend = Fusion:Tag {
