@@ -10,6 +10,8 @@ prototype(GM:Map) {
 	hasMap = ${this.mapLocation ? true : false}
 	hasStreetview = ${this.streetviewLocation ? true : false}
 
+	@if.showElement = ${this.hasMap || this.hasStreetview || node.context.inBackend ? true : false}
+
 	@context {
 		configuration = ${this.configuration}
 		cssClasses = ${this.cssClasses}
