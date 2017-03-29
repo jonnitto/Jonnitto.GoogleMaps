@@ -29,6 +29,7 @@ prototype(GM:Map) {
 
 	attributes.class = Fusion:RawArray {
 		both = ${hasMapAndStreet ? cssClasses.both.wrapper : false}
+		container = ${cssClasses.container}
 	}
 
 	mapAttributes = Fusion:Attributes {

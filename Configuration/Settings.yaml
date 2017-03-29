@@ -7,12 +7,14 @@ Jonnitto:
     includeCSS: true
     googleAPI: '//maps.google.com/maps/api/js?key={APIKey}&callback=initJonnittoGoogleMaps'
     cssClasses:
+      container: false
       map: jonnitto-googlemaps-mapview
       streetview: jonnitto-googlemaps-streetview
       both:
         wrapper: jonnitto-googlemaps-both-wrapper
         map: jonnitto-googlemaps-both-mapview
         streetview: jonnitto-googlemaps-both-streetview
+
 Neos:
   Neos:
     userInterface:

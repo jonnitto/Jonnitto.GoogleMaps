@@ -8,7 +8,7 @@
   ui:
     label: i18n
     icon: icon-map-marker
-    position: 1000
+    position: 1800
     inspector:
       groups:
         coordinates:
