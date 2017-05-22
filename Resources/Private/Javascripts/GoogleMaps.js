@@ -67,7 +67,7 @@ window.initJonnittoGoogleMaps = function() {
 
 		function successful(location) {
 			element.className += ' ' + initClass;
-			callback(location);
+			callback({element:element, location:location});
 		}
 
 		function failed(status) {
@@ -101,26 +101,26 @@ window.initJonnittoGoogleMaps = function() {
 		}
 	}
 
-	function renderMap(location) {
+	function renderMap(options) {
 		var mapOptions = object.Map.options;
-		var zoom = getNumber(map, 'zoom');
-		var content = map.content || null;
+		var zoom = getNumber(options.element, 'zoom');
+		var content = options.element.content || null;
 		if (content === null) {
-			content = map.innerHTML.replace(/^\s+|\s+$/g,'') || false;
-			map.content = content;
+			content = options.element.innerHTML.replace(/^\s+|\s+$/g,'') || false;
+			options.element.content = content;
 		}
 		var storage = {
 			content : content,
-			LatLng  : location,
-			lat : location.lat(),
-			lng : location.lng()
+			LatLng  : options.location,
+			lat : options.location.lat(),
+			lng : options.location.lng()
 		};
 
 		if (zoom) {
 			mapOptions.zoom = zoom;
 		}
 		mapOptions.center = storage.LatLng;
-		storage.map = new google.maps.Map(map, mapOptions);
+		storage.map = new google.maps.Map(options.element, mapOptions);
 
 		if (storage.content) {
 			storage.infowindow = new google.maps.InfoWindow({
@@ -131,7 +131,7 @@ window.initJonnittoGoogleMaps = function() {
 		// define marker
 		var marker = {
 			position: storage.LatLng,
-			title : map.getAttribute('data-marker-title'),
+			title : options.element.getAttribute('data-marker-title'),
 			map: storage.map,
 			draggable: false
 		};
@@ -144,13 +144,19 @@ window.initJonnittoGoogleMaps = function() {
 
 		storage.marker = new google.maps.Marker(marker);
 
-		if (hasData(map,'showinfo') && storage.content) {
+		if (hasData(options.element,'showinfo') && storage.content) {
 			storage.infowindow.open(storage.map,storage.marker);
 		}
 
 		// jshint loopfunc:true
 		if (typeof window.addEventListener === 'function') {
 			(function(_storage) {
+				google.maps.event.addListener(_storage.map, 'bounds_changed', function() {
+					_storage.center = _storage.map.getCenter();
+				});
+				google.maps.event.addDomListener(window, 'resize', function() {
+					_storage.map.setCenter(_storage.center);
+				});
 				google.maps.event.addListener(_storage.marker, 'click', function() {
 					if (_storage.content) {
 						_storage.infowindow.open(_storage.map, _storage.marker);
@@ -163,14 +169,14 @@ window.initJonnittoGoogleMaps = function() {
 		// jshint loopfunc:false
 	};
 
-	function renderStreetview(location) {
+	function renderStreetview(options) {
 		var streetStorage = object.Streetview.options;
-		streetStorage.position = location;
+		streetStorage.position = options.location;
 		streetStorage.pov = {
-			heading: getNumber(streetview, 'heading') || 0,
-			pitch: getNumber(streetview, 'pitch') || 0
+			heading: getNumber(options.element, 'heading') || 0,
+			pitch: getNumber(options.element, 'pitch') || 0
 		};
-		new google.maps.StreetViewPanorama(streetview, streetStorage);
+		new google.maps.StreetViewPanorama(options.element, streetStorage);
 	};
 
 	for (var key in object) {

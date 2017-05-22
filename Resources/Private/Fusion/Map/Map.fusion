@@ -1,6 +1,8 @@
 // Namespaces are defined in "Root.fusion"
 
 prototype(GM:Map) {
+	templatePath = 'resource://Jonnitto.GoogleMaps/Private/Fusion/Map/Map.html'
+
 	configuration = ${Configuration.setting('Jonnitto.GoogleMaps')}
 	cssClasses = ${this.configuration.cssClasses}
 	APIKey = ${this.configuration.APIKey}
