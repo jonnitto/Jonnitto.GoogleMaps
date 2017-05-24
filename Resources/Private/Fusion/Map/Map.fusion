@@ -30,6 +30,8 @@ prototype(GM:Map) {
 	}
 
 	attributes.class = Fusion:RawArray {
+		@process.nodeType >
+		nodeType = 'jonnitto-googlemaps'
 		both = ${hasMapAndStreet ? cssClasses.both.wrapper : false}
 		container = ${cssClasses.container}
 	}
