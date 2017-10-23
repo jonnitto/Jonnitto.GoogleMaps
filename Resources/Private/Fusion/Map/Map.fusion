@@ -1,61 +1,102 @@
-// Namespaces are defined in "Root.fusion"
+prototype(Jonnitto.GoogleMaps:Map) < prototype(Neos.Fusion:Tag) {
+    configuration = ${Configuration.setting('Jonnitto.GoogleMaps')}
+    APIKey = ${this.configuration.APIKey}
+    editable = true
 
-prototype(GM:Map) {
-	templatePath = 'resource://Jonnitto.GoogleMaps/Private/Fusion/Map/Map.html'
+    mapLocation = ${String.trim(q(node).property('mapLocation'))}
+    streetviewLocation = ${String.trim(q(node).property('streetviewLocation'))}
+    zoom = ${q(node).property('zoom')}
+    showinfo = ${q(node).property('showinfo')}
+    title = ${q(node).property('title')}
+    text = ${q(node).property('text')}
+    heading = ${q(node).property('heading')}
+    pitch = ${q(node).property('pitch')}
 
-	configuration = ${Configuration.setting('Jonnitto.GoogleMaps')}
-	cssClasses = ${this.configuration.cssClasses}
-	APIKey = ${this.configuration.APIKey}
-	mapLocation = ${String.trim(q(node).property('mapLocation'))}
-	streetviewLocation = ${String.trim(q(node).property('streetviewLocation'))}
+    @context {
+        configuration = ${this.configuration}
+        APIKey = ${this.APIKey}
+        mapLocation = ${this.mapLocation}
+        streetviewLocation = ${this.streetviewLocation}
+        zoom = ${this.zoom}
+        showinfo = ${this.showinfo}
+        title = ${this.title}
+        text = ${this.text}
+        alertLinkStyle = 'color:#fff;text-decoration:underline'
+        needRow = ${this.mapLocation && this.streetviewLocation ? true : false}
+        editable = ${this.editable}
+        heading = ${this.heading}
+        pitch = ${this.pitch}
+    }
 
-	hasMap = ${this.mapLocation ? true : false}
-	hasStreetview = ${this.streetviewLocation ? true : false}
+    attributes.class = Neos.Fusion:RawArray {
+        nodeType = 'jonnitto-googlemaps'
+        both = ${needRow ? configuration.cssClasses.both.wrapper : false}
+        container = ${configuration.cssClasses.container}
+    }
 
-	@if {
-		hasContent = ${this.hasMap || this.hasStreetview || node.context.inBackend ? true : false}
-		hasAPI = ${this.APIKey || node.context.inBackend ? true : false}
-	}
+    content = Neos.Fusion:Case {
+        noApiKey {
+            condition = ${APIKey ? false : true}
+            renderer = Carbon.Notification:Backend {
+                type = 'alert'
+                content = ${Translation.translate('noAPIKey', null, {style:alertLinkStyle,link:'https://console.developers.google.com/apis/api/maps_backend'}, null, 'Jonnitto.GoogleMaps')}
+            }
+        }
+        noAddress {
+            condition = ${mapLocation || streetviewLocation ? false : true}
+            renderer = Carbon.Notification:Backend {
+                type = 'warning'
+                content = ${Translation.translate('noAddress', null, {style:alertLinkStyle,link:'https://console.developers.google.com/apis/api/maps_backend'}, null, 'Jonnitto.GoogleMaps')}
+            }
+        }
+        hasAddress {
+            condition = true
+            renderer = Neos.Fusion:Array {
+                map = Neos.Fusion:Tag {
+                    @if.hasMap = ${mapLocation ? true : false}
+                    attributes {
+                        class = Neos.Fusion:RawArray {
+                            google = ${configuration.cssClasses.map}
+                            both = ${needRow ? configuration.cssClasses.both.map : false}
+                        }
+                        data-location = ${mapLocation}
+                        data-zoom = ${zoom ? zoom : false}
+                        data-showinfo = ${showinfo ? showinfo : false}
+                    }
+                    content = Neos.Fusion:Array {
+                        title = Neos.Fusion:Tag {
+                            tagName = 'strong'
+                            content = Jonnitto.GoogleMaps:nl2br {
+                                value = ${title + '<br>'}
+                            }
+                            @if.hasTitle = ${title ? true : false}
+                        }
+                        text = Jonnitto.GoogleMaps:nl2br {
+                            value = ${text}
+                        }
+                    }
+                }
+                streetview = Neos.Fusion:Tag {
+                    @if.hasMap = ${streetviewLocation ? true : false}
+                    attributes {
+                        class = Neos.Fusion:RawArray {
+                            google = ${configuration.cssClasses.streetview}
+                            both = ${needRow ? configuration.cssClasses.both.streetview : false}
+                        }
+                        data-location = ${streetviewLocation}
+                        data-heading = ${heading ? heading : false}
+                        data-pitch = ${pitch ? pitch : false}
+                    }
+                }
+            }
+        }
+    }
 
-	@context {
-		configuration = ${this.configuration}
-		cssClasses = ${this.cssClasses}
 
-		mapLocation = ${this.mapLocation}
-		streetviewLocation = ${this.streetviewLocation}
-
-		hasMap = ${this.hasMap}
-		hasStreetview = ${this.hasStreetview}
-		hasMapAndStreet = ${this.mapLocation && this.streetviewLocation ? true : false}
-	}
-
-	attributes.class = Fusion:RawArray {
-		@process.nodeType >
-		nodeType = 'jonnitto-googlemaps'
-		both = ${hasMapAndStreet ? cssClasses.both.wrapper : false}
-		container = ${cssClasses.container}
-	}
-
-	mapAttributes = Fusion:Attributes {
-		class = Fusion:RawArray {
-			google = ${cssClasses.map}
-			both = ${hasMapAndStreet ? cssClasses.both.map : false}
-		}
-		data-location = ${mapLocation}
-		data-zoom = ${q(node).property('zoom')}
-		data-showinfo = ${q(node).property('showinfo')}
-	}
-
-	streetViewAttributes = Fusion:Attributes {
-		class = Fusion:RawArray {
-			google = ${cssClasses.streetview}
-			both = ${hasMapAndStreet ? cssClasses.both.streetview : false}
-		}
-		data-location = ${streetviewLocation}
-		data-heading = ${q(node).property('heading')}
-		data-pitch = ${q(node).property('pitch')}
-	}
-
-	title = ${q(node).property('title')}
-	text = ${q(node).property('text')}
+    @process.contentElementWrapping {
+        expression = Neos.Neos:ContentElementWrapping
+        editable = ${editable}
+        @position = 'end 999999999'
+    }
+    @exceptionHandler = 'Neos\\Neos\\Fusion\\ExceptionHandlers\\NodeWrappingHandler'
 }

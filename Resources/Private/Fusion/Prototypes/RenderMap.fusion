@@ -1,11 +1,9 @@
-// Namespaces are defined in "Root.fusion"
+prototype(Jonnitto.GoogleMaps:RenderMap) < prototype(Neos.Fusion:Value) {
+    include = true
 
-prototype(GM:RenderMap) < prototype(Fusion:Value) {
-	include = true
+    api = ${Configuration.setting('Jonnitto.GoogleMaps.APIKey') ? true : false}
+    live = ${q(documentNode).children('[instanceof Neos.Neos:ContentCollection]').find('[instanceof Jonnitto.GoogleMaps:Map]').is()}
+    inBackend = ${node.context.inBackend}
 
-	api = ${Configuration.setting('Jonnitto.GoogleMaps.APIKey') ? true : false}
-	live = ${q(documentNode).children('[instanceof Neos.Neos:ContentCollection]').find('[instanceof Jonnitto.GoogleMaps:Map]').is()}
-	inBackend = ${node.context.inBackend}
-
-	value = ${(this.api && this.include && (this.live || this.inBackend)) ? true : false}
+    value = ${(this.api && this.include && (this.live || this.inBackend)) ? true : false}
 }

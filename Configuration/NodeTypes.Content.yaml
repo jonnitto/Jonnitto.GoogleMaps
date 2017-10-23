@@ -14,9 +14,12 @@
         coordinates:
           label: i18n
           position: 10
+          icon: icon-map
         infobox:
           label: i18n
           position: 20
+          icon: icon-map-marker
         streetview:
           label: i18n
           position: 30
+          icon: icon-street-view

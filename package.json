@@ -1,20 +1,21 @@
 {
-  "name": "NeosGoogleMaps",
-  "description": "Render files for GoogleMaps",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/jonnitto/Jonnitto.GoogleMaps.git"
-  },
-  "devDependencies": {
-    "cssnano-cli": "latest",
-    "node-sass": "latest",
-    "uglify-js2": "latest"
-  },
-  "scripts": {
-    "js": "uglifyjs2 Resources/Private/Javascripts/GoogleMaps.js --mangle --compress --output Resources/Public/Main.js && uglifyjs2 Resources/Private/Javascripts/Backend.js --mangle --compress --output Resources/Public/Backend.js",
-    "css": "node-sass Resources/Private/Styles/GoogleMaps.scss Resources/Public/Main.css | cssnano Resources/Public/Main.css Resources/Public/Main.css  --autoprefixer.add true --autoprefixer.browsers: '> 1%' --no-zindex --discardComments.removeAll true ",
-    "start": "npm run css && npm run js"
-  },
-  "dependencies": {}
+    "name": "NeosGoogleMaps",
+    "description": "Render files for GoogleMaps",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/jonnitto/Jonnitto.GoogleMaps.git"
+    },
+    "devDependencies": {
+        "cssnano-cli": "latest",
+        "node-sass": "latest",
+        "uglify-js2": "latest"
+    },
+    "scripts": {
+        "js":
+            "uglifyjs2 Resources/Private/Javascripts/GoogleMaps.js --mangle --compress --output Resources/Public/Main.js && uglifyjs2 Resources/Private/Javascripts/Backend.js --mangle --compress --output Resources/Public/Backend.js",
+        "css":
+            "node-sass Resources/Private/Styles/GoogleMaps.scss Resources/Public/Main.css | cssnano Resources/Public/Main.css Resources/Public/Main.css  --autoprefixer.add true --autoprefixer.browsers: '> 1%' --no-zindex --discardComments.removeAll true ",
+        "start": "npm run css && npm run js"
+    }
 }

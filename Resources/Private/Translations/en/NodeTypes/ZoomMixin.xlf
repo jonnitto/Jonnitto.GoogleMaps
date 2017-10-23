@@ -1,76 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file original="" product-name="Jonnitto.GoogleMaps" source-language="en" datatype="plaintext">
-		<body>
-			<trans-unit id="properties.zoom" xml:space="preserve">
-				<source>Zoom level</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.placeholder" xml:space="preserve">
-				<source>Default setting</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.1" xml:space="preserve">
-				<source>4000 km</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.2" xml:space="preserve">
-				<source>2000 km (world)</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.3" xml:space="preserve">
-				<source>1000 km</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.4" xml:space="preserve">
-				<source>400 km (continent)</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.5" xml:space="preserve">
-				<source>200 km</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.6" xml:space="preserve">
-				<source>100 km (country)</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.7" xml:space="preserve">
-				<source>50 km</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.8" xml:space="preserve">
-				<source>30 km</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.9" xml:space="preserve">
-				<source>15 km (area)</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.10" xml:space="preserve">
-				<source>8 km</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.11" xml:space="preserve">
-				<source>4 km</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.12" xml:space="preserve">
-				<source>2 km (city)</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.13" xml:space="preserve">
-				<source>1 km</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.14" xml:space="preserve">
-				<source>400 m (district)</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.15" xml:space="preserve">
-				<source>200 m</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.16" xml:space="preserve">
-				<source>100 m</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.17" xml:space="preserve">
-				<source>50 m (street)</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.18" xml:space="preserve">
-				<source>20 m</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.19" xml:space="preserve">
-				<source>10 m</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.20" xml:space="preserve">
-				<source>5 m (house)</source>
-			</trans-unit>
-			<trans-unit id="properties.zoom.selectBoxEditor.values.21" xml:space="preserve">
-				<source>2.5 m</source>
-			</trans-unit>
-		</body>
-	</file>
+    <file original="" product-name="Jonnitto.GoogleMaps" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="properties.zoom" xml:space="preserve">
+                <source>Zoom level</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.placeholder" xml:space="preserve">
+                <source>Default setting</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.1" xml:space="preserve">
+                <source>4000 km</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.2" xml:space="preserve">
+                <source>2000 km (world)</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.3" xml:space="preserve">
+                <source>1000 km</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.4" xml:space="preserve">
+                <source>400 km (continent)</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.5" xml:space="preserve">
+                <source>200 km</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.6" xml:space="preserve">
+                <source>100 km (country)</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.7" xml:space="preserve">
+                <source>50 km</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.8" xml:space="preserve">
+                <source>30 km</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.9" xml:space="preserve">
+                <source>15 km (area)</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.10" xml:space="preserve">
+                <source>8 km</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.11" xml:space="preserve">
+                <source>4 km</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.12" xml:space="preserve">
+                <source>2 km (city)</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.13" xml:space="preserve">
+                <source>1 km</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.14" xml:space="preserve">
+                <source>400 m (district)</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.15" xml:space="preserve">
+                <source>200 m</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.16" xml:space="preserve">
+                <source>100 m</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.17" xml:space="preserve">
+                <source>50 m (street)</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.18" xml:space="preserve">
+                <source>20 m</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.19" xml:space="preserve">
+                <source>10 m</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.20" xml:space="preserve">
+                <source>5 m (house)</source>
+            </trans-unit>
+            <trans-unit id="properties.zoom.selectBoxEditor.values.21" xml:space="preserve">
+                <source>2.5 m</source>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

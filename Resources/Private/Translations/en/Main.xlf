@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file original="" product-name="Jonnitto.GoogleMaps" source-language="en" datatype="plaintext">
-		<body>
-			<trans-unit id="noAPIKey" xml:space="preserve">
-				<source><![CDATA[Please set the API Key in the settings. The key can be generated in the <a style="{style}" href="{link}" target="_blank">Google Developers Console</a>.]]></source>
-			</trans-unit>
-		</body>
-	</file>
+    <file original="" product-name="Jonnitto.GoogleMaps" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="noAPIKey" xml:space="preserve">
+                <source><![CDATA[Please set the API Key in the settings. The key can be generated in the <a style="{style}" href="{link}" target="_blank">Google Developers Console</a>.]]></source>
+            </trans-unit>
+            <trans-unit id="noAddress" xml:space="preserve">
+              <source>To display a map, add an address in the inspector.</source>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

@@ -1,4 +1,1 @@
-namespace: Fusion = Neos.Fusion
-namespace: GM = Jonnitto.GoogleMaps
-
 include: **/*.fusion

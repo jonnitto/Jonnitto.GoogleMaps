@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file original="" product-name="Jonnitto.GoogleMaps" source-language="en" datatype="plaintext">
-		<body>
-			<trans-unit id="properties.streetviewLocation" xml:space="preserve">
-				<source>Location</source>
-			</trans-unit>
-			<trans-unit id="properties.streetviewLocation.ui.help.message" xml:space="preserve">
-				<source>You can enter the location with coordinates (latitude, longitude) or with an address.</source>
-			</trans-unit>
-			<trans-unit id="properties.heading" xml:space="preserve">
-				<source>Heading direction</source>
-			</trans-unit>
-			<trans-unit id="properties.pitch" xml:space="preserve">
-				<source>Pitch</source>
-			</trans-unit>
-		</body>
-	</file>
+    <file original="" product-name="Jonnitto.GoogleMaps" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="properties.streetviewLocation" xml:space="preserve">
+                <source>Location</source>
+            </trans-unit>
+            <trans-unit id="properties.streetviewLocation.ui.help.message" xml:space="preserve">
+                <source>You can enter the location with coordinates (latitude, longitude) or with an address.</source>
+            </trans-unit>
+            <trans-unit id="properties.heading" xml:space="preserve">
+                <source>Heading direction</source>
+            </trans-unit>
+            <trans-unit id="properties.pitch" xml:space="preserve">
+                <source>Pitch</source>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

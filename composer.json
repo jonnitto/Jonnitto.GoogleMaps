@@ -2,21 +2,19 @@
     "name": "jonnitto/googlemaps",
     "type": "neos-plugin",
     "description": "Google Maps as Content Element",
-    "keywords": [
-        "flow",
-        "neos",
-        "map",
-        "googlemaps",
-        "contentelement"
-    ],
+    "keywords": ["flow", "neos", "map", "googlemaps", "contentelement"],
     "license": "MIT",
     "require": {
-        "neos/neos": "~3.0 || dev-master"
+        "neos/neos": "~3.0 || dev-master",
+        "carbon/notification": "^1.0"
     },
     "autoload": {
         "psr-4": {
             "Jonnitto\\GoogleMaps\\": "Classes"
         }
+    },
+    "archive": {
+        "exclude": [".editorconfig", ".gitignore", ".github", "package.json", "CODE_OF_CONDUCT.md"]
     },
     "authors": [
         {

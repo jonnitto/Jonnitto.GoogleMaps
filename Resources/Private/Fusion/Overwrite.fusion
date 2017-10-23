@@ -1,0 +1,47 @@
+prototype(Page) {
+    head.googleMaps = Neos.Fusion:Tag {
+        tagName = 'link'
+        attributes {
+            rel = 'stylesheet'
+            href = Neos.Fusion:ResourceUri {
+                path = 'resource://Jonnitto.GoogleMaps/Public/Main.css'
+            }
+        }
+        @if.render = Jonnitto.GoogleMaps:RenderMap {
+            include = ${Configuration.setting('Jonnitto.GoogleMaps.includeCSS')}
+        }
+    }
+
+    body.javascripts {
+        googleMapsFunction = Neos.Fusion:Tag {
+            tagName = 'script'
+            attributes.src = Neos.Fusion:ResourceUri {
+                path = 'resource://Jonnitto.GoogleMaps/Public/Main.js'
+            }
+            @position = 'end 100'
+            @if.render = Jonnitto.GoogleMaps:RenderMap {
+                include = ${Configuration.setting('Jonnitto.GoogleMaps.includeFunction')}
+            }
+        }
+        googleMapsApi = Neos.Fusion:Tag {
+            tagName = 'script'
+            attributes.src = ${String.replace(Configuration.setting('Jonnitto.GoogleMaps.googleAPI'), '{APIKey}', Configuration.setting('Jonnitto.GoogleMaps.APIKey'))}
+            attributes.id = 'jonnitto-googlemaps-api'
+            @position = 'after googleMapsFunction'
+            @if.render = Jonnitto.GoogleMaps:RenderMap {
+                include = ${Configuration.setting('Jonnitto.GoogleMaps.includeGoogleAPI')}
+            }
+        }
+        googleMapsBackend = Neos.Fusion:Tag {
+            tagName = 'script'
+            attributes.src = Neos.Fusion:ResourceUri {
+                path = 'resource://Jonnitto.GoogleMaps/Public/Backend.js'
+            }
+            @position = 'after googleMapsApi'
+            @if.render = Jonnitto.GoogleMaps:RenderMap {
+                include = ${Configuration.setting('Jonnitto.GoogleMaps.includeBackendJS')}
+                live = false
+            }
+        }
+    }
+}

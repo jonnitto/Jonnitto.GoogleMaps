@@ -1,0 +1,5 @@
+// Replace all newlines with an <br>
+prototype(Jonnitto.GoogleMaps:nl2br) < prototype(Neos.Fusion:Value) {
+    value = ${value}
+    @process.replace = ${String.pregReplace(String.trim(value), '/\n/' , '<br>')}
+}
