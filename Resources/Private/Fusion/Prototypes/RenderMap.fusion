@@ -1,9 +1,6 @@
-prototype(Jonnitto.GoogleMaps:RenderMap) < prototype(Neos.Fusion:Value) {
-    include = true
+prototype(Jonnitto.GoogleMaps:RenderMap) < prototype(Carbon.Condition:Case) {
+    enable = true
+    enable.@process.api = ${Configuration.setting('Jonnitto.GoogleMaps.APIKey') ? value : false}
 
-    api = ${Configuration.setting('Jonnitto.GoogleMaps.APIKey') ? true : false}
-    live = ${q(documentNode).children('[instanceof Neos.Neos:ContentCollection]').find('[instanceof Jonnitto.GoogleMaps:Map]').is()}
-    inBackend = ${node.context.inBackend}
-
-    value = ${(this.api && this.include && (this.live || this.inBackend)) ? true : false}
+    content.nodeType = 'Jonnitto.GoogleMaps:Map'
 }

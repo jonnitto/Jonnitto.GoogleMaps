@@ -8,7 +8,7 @@ prototype(Page) {
             }
         }
         @if.render = Jonnitto.GoogleMaps:RenderMap {
-            include = ${Configuration.setting('Jonnitto.GoogleMaps.includeCSS')}
+            enabled = ${Configuration.setting('Jonnitto.GoogleMaps.includeCSS')}
         }
     }
 
@@ -20,7 +20,7 @@ prototype(Page) {
             }
             @position = 'end 100'
             @if.render = Jonnitto.GoogleMaps:RenderMap {
-                include = ${Configuration.setting('Jonnitto.GoogleMaps.includeFunction')}
+                enabled = ${Configuration.setting('Jonnitto.GoogleMaps.includeFunction')}
             }
         }
         googleMapsApi = Neos.Fusion:Tag {
@@ -29,7 +29,7 @@ prototype(Page) {
             attributes.id = 'jonnitto-googlemaps-api'
             @position = 'after googleMapsFunction'
             @if.render = Jonnitto.GoogleMaps:RenderMap {
-                include = ${Configuration.setting('Jonnitto.GoogleMaps.includeGoogleAPI')}
+                enabled = ${Configuration.setting('Jonnitto.GoogleMaps.includeGoogleAPI')}
             }
         }
         googleMapsBackend = Neos.Fusion:Tag {
@@ -39,8 +39,7 @@ prototype(Page) {
             }
             @position = 'after googleMapsApi'
             @if.render = Jonnitto.GoogleMaps:RenderMap {
-                include = ${Configuration.setting('Jonnitto.GoogleMaps.includeBackendJS')}
-                live = false
+                enabled = ${Configuration.setting('Jonnitto.GoogleMaps.includeBackendJS') && node.context.inBackend}
             }
         }
     }
