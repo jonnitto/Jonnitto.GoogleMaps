@@ -1,5 +1,5 @@
 'Jonnitto.GoogleMaps:MapLocationMixin':
-  abstract: TRUE
+  abstract: true
   properties:
     mapLocation:
       type: string
@@ -7,27 +7,27 @@
         label: i18n
         help:
           message: i18n
-        reloadIfChanged: TRUE
+        reloadPageIfChanged: true
         inspector:
           group: coordinates
           position: 100
 
 'Jonnitto.GoogleMaps:ZoomMixin':
-  abstract: TRUE
+  abstract: true
   properties:
     zoom:
       type: string
       defaultValue: ''
       ui:
         label: i18n
-        reloadIfChanged: TRUE
+        reloadPageIfChanged: true
         inspector:
           group: coordinates
           position: 200
           editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             placeholder: i18n
-            allowEmpty: TRUE
+            allowEmpty: true
             values:
               1:
                 label: i18n
@@ -73,14 +73,14 @@
                 label: i18n
 
 'Jonnitto.GoogleMaps:InfoboxMixin':
-  abstract: TRUE
+  abstract: true
   properties:
     title:
       type: string
       ui:
         label: i18n
-        inlineEditable: TRUE
-        reloadIfChanged: TRUE
+        inlineEditable: true
+        reloadPageIfChanged: true
         inspector:
           group: infobox
           position: 100
@@ -89,23 +89,23 @@
       type: string
       ui:
         label: i18n
-        reloadIfChanged: TRUE
+        reloadPageIfChanged: true
         inspector:
           group: infobox
           position: 200
           editor: 'Neos.Neos/Inspector/Editors/TextAreaEditor'
     showinfo:
       type: boolean
-      defaultValue: FALSE
+      defaultValue: false
       ui:
         label: i18n
-        reloadIfChanged: TRUE
+        reloadPageIfChanged: true
         inspector:
           group: infobox
           position: 300
 
 'Jonnitto.GoogleMaps:StreetviewMixin':
-  abstract: TRUE
+  abstract: true
   properties:
     streetviewLocation:
       type: string
@@ -113,7 +113,7 @@
         label: i18n
         help:
           message: i18n
-        reloadIfChanged: TRUE
+        reloadPageIfChanged: true
         inspector:
           group: streetview
           position: 100
@@ -122,7 +122,7 @@
         defaultValue: 0
         ui:
           label: i18n
-          reloadIfChanged: TRUE
+          reloadPageIfChanged: true
           inspector:
             group: streetview
             position: 300
@@ -136,7 +136,7 @@
       defaultValue: 0
       ui:
         label: i18n
-        reloadIfChanged: TRUE
+        reloadPageIfChanged: true
         inspector:
           group: streetview
           position: 400

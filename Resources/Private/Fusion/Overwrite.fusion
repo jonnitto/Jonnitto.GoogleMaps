@@ -39,7 +39,7 @@ prototype(Neos.Neos:Page) {
             }
             @position = 'after googleMapsApi'
             @if.render = Jonnitto.GoogleMaps:RenderMap {
-                enabled = ${Configuration.setting('Jonnitto.GoogleMaps.includeBackendJS') && node.context.inBackend}
+                enabled = ${Configuration.setting('Jonnitto.GoogleMaps.includeBackendJS') && node.context.inBackend && Neos.Ui.Activation.isLegacyBackendEnabled()}
             }
         }
     }
