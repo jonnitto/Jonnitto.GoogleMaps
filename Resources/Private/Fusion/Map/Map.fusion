@@ -94,8 +94,8 @@ prototype(Jonnitto.GoogleMaps:Map) < prototype(Neos.Fusion:Tag) {
 
 
     @process.contentElementWrapping {
+        @if.editable = ${editable}
         expression = Neos.Neos:ContentElementWrapping
-        editable = ${editable}
         @position = 'end 999999999'
     }
     @exceptionHandler = 'Neos\\Neos\\Fusion\\ExceptionHandlers\\NodeWrappingHandler'
