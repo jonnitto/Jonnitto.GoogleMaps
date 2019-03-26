@@ -1,0 +1,65 @@
+prototype(Jonnitto.GoogleMaps:StaticMap) < prototype(Neos.Fusion:Tag) {
+    configuration = ${Configuration.setting('Jonnitto.GoogleMaps')}
+    APIKey = ${this.configuration.APIKey}
+    editable = true
+
+    mapLocation = ${String.trim(q(node).property('mapLocation'))}
+    zoom = ${q(node).property('zoom')}
+
+    @context {
+        configuration = ${this.configuration}
+        APIKey = ${this.APIKey}
+        mapLocation = ${this.mapLocation}
+        zoom = ${this.zoom}
+        alertLinkStyle = 'color:#fff;text-decoration:underline'
+        editable = ${this.editable}
+    }
+
+    attributes.class = Neos.Fusion:RawArray {
+        nodeType = 'jonnitto-googlestaticmap'
+        container = ${configuration.cssClasses.container}
+    }
+
+    content = Neos.Fusion:Case {
+        noApiKey {
+            condition = ${APIKey ? false : true}
+            renderer = Carbon.Notification:Backend {
+                type = 'alert'
+                content = ${Translation.translate('noAPIKey', null, {style:alertLinkStyle,link:'https://console.developers.google.com/apis/api/maps_backend'}, null, 'Jonnitto.GoogleMaps')}
+            }
+        }
+        noAddress {
+            condition = ${mapLocation || streetviewLocation ? false : true}
+            renderer = Carbon.Notification:Backend {
+                type = 'warning'
+                content = ${Translation.translate('noAddress', null, {style:alertLinkStyle,link:'https://console.developers.google.com/apis/api/maps_backend'}, null, 'Jonnitto.GoogleMaps')}
+            }
+        }
+        hasAddress {
+            condition = true
+            renderer = Neos.Fusion:Array {
+                staticmap = Neos.Fusion:Tag {
+                    @if.hasMap = ${mapLocation ? true : false}
+                    tagName = 'img'
+                    attributes {
+                        class = Neos.Fusion:RawArray {
+                            google = ${configuration.cssClasses.map}
+                        }
+
+                        src = ${q(node).buildStaticMapsUri('a','b')}
+                        data-location = ${mapLocation}
+                        data-zoom = ${zoom ? zoom : false}
+                    }
+                }
+            }
+        }
+    }
+
+
+    @process.contentElementWrapping {
+        @if.editable = ${editable}
+        expression = Neos.Neos:ContentElementWrapping
+        @position = 'end 999999999'
+    }
+    @exceptionHandler = 'Neos\\Neos\\Fusion\\ExceptionHandlers\\NodeWrappingHandler'
+}
