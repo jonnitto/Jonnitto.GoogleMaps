@@ -1,11 +1,13 @@
 Jonnitto:
   GoogleMaps:
     APIKey: null
-    includeGoogleAPI: false
-    includeFunction: false
-    includeBackendJS: false
-    includeCSS: false
+    SigningSecret: null
+    includeGoogleAPI: true
+    includeFunction: true
+    includeBackendJS: true
+    includeCSS: true
     googleAPI: '//maps.google.com/maps/api/js?key={APIKey}&callback=initJonnittoGoogleMaps'
+    googleStaticMapsAPI: '//maps.googleapis.com/maps/api/staticmap?key={APIKey}'
     cssClasses:
       container: false
       map: jonnitto-googlemaps-mapview
@@ -23,8 +25,10 @@ Neos:
         autoInclude:
           Jonnitto.GoogleMaps:
             - 'NodeTypes/*'
+    fusion:
+      autoInclude:
+        Jonnitto.GoogleMaps: true
+
   Fusion:
     defaultContext:
-      'Jonnitto.GoogleMaps': 'Jonnitto\GoogleMaps\Fusion\Eel\BuildStaticMapsUri'
-
-
+      'Jonnitto.GoogleMaps': Jonnitto\GoogleMaps\Fusion\Eel\GoogleMapsUriBuilder

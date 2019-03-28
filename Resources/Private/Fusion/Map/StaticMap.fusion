@@ -11,8 +11,11 @@ prototype(Jonnitto.GoogleMaps:StaticMap) < prototype(Neos.Fusion:Tag) {
         APIKey = ${this.APIKey}
         mapLocation = ${this.mapLocation}
         zoom = ${this.zoom}
+        width = ${this.width}
+        height = ${this.height}
         alertLinkStyle = 'color:#fff;text-decoration:underline'
         editable = ${this.editable}
+        requestURI = ${'https:' + String.replace(Configuration.setting('Jonnitto.GoogleMaps.googleStaticMapsAPI'), '{APIKey}', Configuration.setting('Jonnitto.GoogleMaps.APIKey')) + '&center=' + this.mapLocation + '&zoom=' + this.zoom + '&size=' + this.width + 'x' + this.height }
     }
 
     attributes.class = Neos.Fusion:RawArray {
@@ -29,7 +32,7 @@ prototype(Jonnitto.GoogleMaps:StaticMap) < prototype(Neos.Fusion:Tag) {
             }
         }
         noAddress {
-            condition = ${mapLocation || streetviewLocation ? false : true}
+            condition = ${mapLocation ? false : true}
             renderer = Carbon.Notification:Backend {
                 type = 'warning'
                 content = ${Translation.translate('noAddress', null, {style:alertLinkStyle,link:'https://console.developers.google.com/apis/api/maps_backend'}, null, 'Jonnitto.GoogleMaps')}
@@ -37,18 +40,17 @@ prototype(Jonnitto.GoogleMaps:StaticMap) < prototype(Neos.Fusion:Tag) {
         }
         hasAddress {
             condition = true
+
             renderer = Neos.Fusion:Array {
                 staticmap = Neos.Fusion:Tag {
                     @if.hasMap = ${mapLocation ? true : false}
                     tagName = 'img'
+
                     attributes {
                         class = Neos.Fusion:RawArray {
                             google = ${configuration.cssClasses.map}
                         }
-
-                        src = ${q(node).buildStaticMapsUri('a','b')}
-                        data-location = ${mapLocation}
-                        data-zoom = ${zoom ? zoom : false}
+                        uri = ${Jonnitto.GoogleMaps.buildStaticMapsUri(requestURI)}
                     }
                 }
             }
