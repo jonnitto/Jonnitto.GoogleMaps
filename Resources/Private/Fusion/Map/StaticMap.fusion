@@ -3,19 +3,42 @@ prototype(Jonnitto.GoogleMaps:StaticMap) < prototype(Neos.Fusion:Tag) {
     APIKey = ${this.configuration.APIKey}
     editable = true
 
-    mapLocation = ${String.trim(q(node).property('mapLocation'))}
+    mapLocation = ${Jonnitto.GoogleMaps.urlencodeValue(String.trim(q(node).property('mapLocation')))}
     zoom = ${q(node).property('zoom')}
+    scale = ${q(node).property('scale')}
+
+    maptype = ${Jonnitto.GoogleMaps.urlencodeValue(q(node).property('maptype'))}
+
+    markerLocation = ${Jonnitto.GoogleMaps.urlencodeValue(q(node).property('markerLocation'))}
+    markerSize = ${q(node).property('markerSize')}
+    markerSizeURIpart = ${q(node).property('markerSize') ? 'size%3A' + q(node).property('markerSize') : ''}
+    markerColor = ${q(node).property('markerColor')}
+    markerColorURIpart = ${q(node).property('markerColor') ? '%7Ccolor%3A' +  Jonnitto.GoogleMaps.urlencodeValue(q(node).property('markerColor')) : ''}
+    markerLabel = ${q(node).property('markerLabel')}
+    markerLabelURIpart = ${q(node).property('markerLabel') ? '%7Clabel%3A' +  Jonnitto.GoogleMaps.urlencodeValue(q(node).property('markerLabel')) : ''}
+    markerCustomIcon = ${q(node).property('markerCustomIcon')}
+    markerCustomIconURIpart = ${q(node).property('markerCustomIcon') ? 'icon%3A' +  Jonnitto.GoogleMaps.urlencodeValue(q(node).property('markerCustomIcon')) : ''}
+
+    marker = ${q(node).property('markerLocation') ? '&markers=' + this.markerSizeURIpart + this.markerColorURIpart + this.markerLabelURIpart + this.markerCustomIconURIpart + '%7C' + this.markerLocation: ''}
+    finalmarker = ${q(node).property('markerCustomIcon') && q(node).property('markerLocation') ? '&markers=' + this.markerCustomIconURIpart + '%7C' + this.markerLocation : this.marker}
 
     @context {
         configuration = ${this.configuration}
         APIKey = ${this.APIKey}
         mapLocation = ${this.mapLocation}
-        zoom = ${this.zoom}
-        width = ${this.width}
-        height = ${this.height}
         alertLinkStyle = 'color:#fff;text-decoration:underline'
         editable = ${this.editable}
-        requestURI = ${'https:' + String.replace(Configuration.setting('Jonnitto.GoogleMaps.googleStaticMapsAPI'), '{APIKey}', Configuration.setting('Jonnitto.GoogleMaps.APIKey')) + '&center=' + this.mapLocation + '&zoom=' + this.zoom + '&size=' + this.width + 'x' + this.height }
+
+        requestURI = ${
+            'https:'
+            + String.replace(Configuration.setting('Jonnitto.GoogleMaps.googleStaticMapsAPI'), '{APIKey}',Configuration.setting('Jonnitto.GoogleMaps.APIKey'))
+            + '&center=' + this.mapLocation
+            + '&zoom=' + this.zoom
+            + '&size=' + this.width + 'x' + this.height
+            + '&scale=' + this.scale
+            + '&maptype=' + this.maptype
+            + this.finalmarker
+        }
     }
 
     attributes.class = Neos.Fusion:RawArray {
@@ -50,10 +73,18 @@ prototype(Jonnitto.GoogleMaps:StaticMap) < prototype(Neos.Fusion:Tag) {
                         class = Neos.Fusion:RawArray {
                             google = ${configuration.cssClasses.map}
                         }
+                        #src = ${Jonnitto.GoogleMaps.buildStaticMapsUri(requestURI)}
                         uri = ${Jonnitto.GoogleMaps.buildStaticMapsUri(requestURI)}
                     }
                 }
             }
+        }
+    }
+
+    @cache{
+        mode = 'uncached'
+        context {
+            1 = 'node'
         }
     }
 

@@ -20,30 +20,37 @@ class GoogleMapsUriBuilder implements ProtectedContextAwareInterface {
      */
     public function buildStaticMapsUri(string $uri) {
         // https://developers.google.com/maps/documentation/maps-static/get-api-key#dig-sig-key
-        $url = parse_url($uri);
-        $url_to_sign  = $url['path'] . "?" . $url['query'];
+       $usablePrivateKey = strtr($this->signingSecret, '-_', '+/');
+       $privateKeyBytes = base64_decode($usablePrivateKey);
 
-        $encoded_signature = hash_hmac("sha1", $url_to_sign, base64_decode(strtr($this->signingSecret, '-_', '+/')), true);
-        $encoded_signature = strtr(base64_encode($encoded_signature), '+/', '-_');
+       $uri = parse_url($uri);
 
-        $original_url = $url['scheme'] . "://" . $url['host'] . $url['path'] . "?" . $url['query'];
+       $encodedPathAndQueryBytes = base64_decode($uri['path'] . "?" . $uri['query']);
 
-        return $original_url."&signature=".$encoded_signature;
+       // compute the hash
+       $hash = hash_hmac('sha1', $encodedPathAndQueryBytes, $privateKeyBytes);
+
+       // convert the bytes to string and make url-safe by replacing '+' and '/' characters
+       $signature = strtr(base64_encode($hash), '-_', '+/');
+
+       return $uri['scheme'] . "://" . $uri['host'] . $uri['path'] . "?" . $uri['query'] . "&signature=" . $signature;
+
     }
 
-    function base64url_encode($data) {
-        return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
-    }
-    function base64url_decode($data) {
-        return base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT));
-    }
-
-    /**
-     * All methods are considered safe, i.e. can be executed from within Eel
-     *
-     * @param string $methodName
-     * @return boolean
+    /***
+     * @param string $value value to be urlencoded
+     * @return mixed encoded value
      */
+    public function urlencodeValue(string $value){
+        return urlencode($value);
+    }
+
+       /**
+        * All methods are considered safe, i.e. can be executed from within Eel
+        *
+        * @param string $methodName
+        * @return boolean
+        */
     public function allowsCallOfMethod($methodName) {
         return TRUE;
     }

@@ -25,6 +25,26 @@
         inspector:
           group: marker
           position: 120
+    markerSize:
+      type: string
+      defaultValue: 'small'
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: marker
+          position: 125
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            placeholder: i18n
+            allowEmpty: true
+            values:
+              tiny:
+                label: i18n
+              small:
+                label: i18n
+              mid:
+                label: i18n
     markerColor:
       type: string
       defaultValue: 'black'
@@ -38,7 +58,6 @@
           position: 130
     markerLabel:
       type: string
-      defaultValue: 'black'
       ui:
         label: i18n
         help:
@@ -47,6 +66,10 @@
         inspector:
           group: marker
           position: 140
+      validation:
+        'Neos.Neos/Validation/StringLengthValidator':
+          minimum: 0
+          maximum: 1
     markerCustomIcon:
       type: string
       defaultValue: ''
@@ -64,7 +87,7 @@
   properties:
     zoom:
       type: string
-      defaultValue: ''
+      defaultValue: '2'
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -218,11 +241,27 @@
         reloadPageIfChanged: true
         inspector:
           group: size
-          position: 300
+          position: 400
       validation:
         'Neos.Neos/Validation/NumberRangeValidator':
           minimum: 1
           maximum: 2048
+        'Neos.Neos/Validation/NotEmptyValidator': []
+    scale:
+      type: integer
+      defaultValue: 1
+      ui:
+        label: i18n
+        help:
+          message: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: size
+          position: 500
+      validation:
+        'Neos.Neos/Validation/NumberRangeValidator':
+          minimum: 1
+          maximum: 4
         'Neos.Neos/Validation/NotEmptyValidator': []
 
 'Jonnitto.GoogleMaps:TypeMixin':

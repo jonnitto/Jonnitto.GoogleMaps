@@ -8,6 +8,12 @@
             <trans-unit id="properties.height" xml:space="preserve">
                 <source>Height</source>
             </trans-unit>
+            <trans-unit id="properties.scale" xml:space="preserve">
+                <source>Scale</source>
+            </trans-unit>
+            <trans-unit id="properties.scale.ui.help.message" xml:space="preserve">
+                <source>The scale value is multiplied with the size to determine the actual output size of the image in pixels, without changing the coverage area of the map. (Default scale value is 1; accepted values are 1, 2, and (for Google Maps APIs Premium Plan customers only) 4).</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
