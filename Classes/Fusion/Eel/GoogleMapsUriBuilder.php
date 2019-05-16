@@ -4,7 +4,14 @@ namespace Jonnitto\GoogleMaps\Fusion\Eel;
 use Neos\Flow\Annotations as Flow;
 use Neos\Eel\ProtectedContextAwareInterface;
 
+
 class GoogleMapsUriBuilder implements ProtectedContextAwareInterface {
+
+    /**
+     * @Flow\Inject
+     * @var \Neos\Flow\Log\SystemLoggerInterface
+     */
+    protected $systemLogger;
 
     /**
      * @var string
@@ -25,16 +32,20 @@ class GoogleMapsUriBuilder implements ProtectedContextAwareInterface {
 
        $uri = parse_url($uri);
 
-       $encodedPathAndQueryBytes = base64_decode($uri['path'] . "?" . $uri['query']);
+       if(array_key_exists('query',$uri) && array_key_exists('path', $uri)){
+           $encodedPathAndQueryBytes = base64_decode($uri['path'] . "?" . $uri['query']);
 
-       // compute the hash
-       $hash = hash_hmac('sha1', $encodedPathAndQueryBytes, $privateKeyBytes);
+            // compute the hash
+            $hash = hash_hmac('sha1', $encodedPathAndQueryBytes, $privateKeyBytes);
 
-       // convert the bytes to string and make url-safe by replacing '+' and '/' characters
-       $signature = strtr(base64_encode($hash), '-_', '+/');
+            // convert the bytes to string and make url-safe by replacing '+' and '/' characters
+            $signature = strtr(base64_encode($hash), '-_', '+/');
 
-       return $uri['scheme'] . "://" . $uri['host'] . $uri['path'] . "?" . $uri['query'] . "&signature=" . $signature;
+            return $uri['scheme'] . "://" . $uri['host'] . $uri['path'] . "?" . $uri['query'] . "&signature=" . $signature;
+        }
 
+       $this->systemLogger->log('Error while converting URI for Google static maps.', LOG_WARNING, $uri);
+       return 'Static Maps URI Builder error - see log for details.';
     }
 
     /***
