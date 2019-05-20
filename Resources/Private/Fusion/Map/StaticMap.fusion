@@ -73,21 +73,14 @@ prototype(Jonnitto.GoogleMaps:StaticMap) < prototype(Neos.Fusion:Tag) {
                         class = Neos.Fusion:RawArray {
                             google = ${configuration.cssClasses.map}
                         }
-                        #src = ${Jonnitto.GoogleMaps.buildStaticMapsUri(requestURI)}
-                        uri = ${Jonnitto.GoogleMaps.buildStaticMapsUri(requestURI)}
+                        src = ${Jonnitto.GoogleMaps.buildStaticMapsUri(requestURI)}
+                        width = ${q(node).property('width')}
+                        height = ${q(node).property('height')}
                     }
                 }
             }
         }
-    }
-
-    @cache{
-        mode = 'uncached'
-        context {
-            1 = 'node'
-        }
-    }
-
+    }  
 
     @process.contentElementWrapping {
         @if.editable = ${editable}
