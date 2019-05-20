@@ -41,7 +41,6 @@ class GoogleMapsUriBuilder implements ProtectedContextAwareInterface {
            $usablePrivateKey = str_replace(['-', '_'], ['+','/'],$this->signingSecret);
            $privateKeyBytes = base64_decode($usablePrivateKey);
 
-//           $encodedPathAndQueryBytes = base64_decode($pathAndQuery);
            // compute the hash
            $hash = hash_hmac('sha1', $pathAndQuery, $privateKeyBytes, true);
 
