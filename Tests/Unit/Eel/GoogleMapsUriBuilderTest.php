@@ -26,10 +26,13 @@ class GoogleMapsUriBuilderTest extends UnitTestCase
      */
     public function URIBuilderProvidesExpectedResult()
     {
-        // expected result according to Google uri builder demo on ...
-        $uri = 'https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyC0tJ0tGySCPC3ZUDFFPjV3bECJx2D-Isw&center=48.2003545%2C16.3421546%2C16z&zoom=2&size=640x480&scale=1&maptype=roadmap';
-        $expected = 'https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyC0tJ0tGySCPC3ZUDFFPjV3bECJx2D-Isw&center=48.2003545%2C16.3421546%2C16z&zoom=2&size=640x480&scale=1&maptype=roadmap&signature=xeeJNzgqHUIsIWZ0GCGTVay2-gA=';
+        // expected result according to Google uri builder demo on https://developers.google.com/maps/documentation/maps-static/get-api-key#dig-sig-key with fake signingsecret AAAbbbCCCdddEEEfffGGGhhhiii
+        $uri = 'https://maps.googleapis.com/maps/api/staticmap?key=BZadSyC0tJ0tGySCPC3ZUDFFPjV3bECJx2D-Isw&center=48.2003545%2C16.3421546%2C16z&zoom=2&size=640x480&scale=1&maptype=roadmap';
+        $expected = "https://maps.googleapis.com/maps/api/staticmap?key=BZadSyC0tJ0tGySCPC3ZUDFFPjV3bECJx2D-Isw&center=48.2003545%2C16.3421546%2C16z&zoom=2&size=640x480&scale=1&maptype=roadmap&signature=g7UKmy3LotcgqVWo_2cjDvTmpjQ=";
+
         $gmub = $this->getUriBuilderWithMockLogger();
+
+        $this->inject($gmub, 'signingSecret', 'AAAbbbCCCdddEEEfffGGGhhhiii');
 
         $resultURI = $gmub->buildStaticMapsUri($uri);
         $this->assertEquals($expected, $resultURI);
