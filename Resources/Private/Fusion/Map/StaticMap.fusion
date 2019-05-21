@@ -25,7 +25,7 @@ prototype(Jonnitto.GoogleMaps:StaticMap) < prototype(Neos.Fusion:Tag) {
     marker = ${q(node).property('markerLocation') ? '&markers=' + this.markerSizeURIpart + this.markerColorURIpart + this.markerLabelURIpart + this.markerCustomIconURIpart + '%7C' + this.markerLocation: ''}
     finalmarker = ${q(node).property('markerCustomIcon') && q(node).property('markerLocation') ? '&markers=' + this.markerCustomIconURIpart + '%7C' + this.markerLocation : this.marker}
     visible = ${q(node).property('visibleLocations') ? '&visible=' + this.visibleLocationsURIpart : ''}
-    poi = ${q(node).property('poi') ? '&style=' + this.poiURIpart : ''}
+    poi = ${q(node).property('poi') ? '' : '&style=' + this.poiURIpart}
 
     @context {
         configuration = ${this.configuration}
