@@ -92,6 +92,19 @@
           group: marker
           position: 160
 
+'Jonnitto.GoogleMaps:StyleMixin':
+  abstract: true
+  properties:
+    poi:
+      type: boolean
+      defaultValue: true
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+            group: style
+            position: 10
+
 'Jonnitto.GoogleMaps:ZoomMixin':
   abstract: true
   properties:

@@ -30,6 +30,7 @@
       'Jonnitto.GoogleMaps:MapLocationMixin': true
       'Jonnitto.GoogleMaps:ZoomMixin': true
       'Jonnitto.GoogleMaps:SizeMixin': true
+      'Jonnitto.GoogleMaps:StyleMixin': true
       'Jonnitto.GoogleMaps:MarkerMixin': true
       'Jonnitto.GoogleMaps:TypeMixin': true
   ui:
@@ -42,6 +43,10 @@
           label: i18n
           position: 10
           icon: icon-map
+        style:
+          label: i18n
+          position: 12
+          icon: icon-paint-brush
         marker:
           label: i18n
           position: 15

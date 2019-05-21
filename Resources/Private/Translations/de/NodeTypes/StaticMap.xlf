@@ -8,6 +8,18 @@
             <trans-unit id="groups.coordinates" xml:space="preserve">
                 <source>Karte</source>
             </trans-unit>
+            <trans-unit id="groups.size" xml:space="preserve">
+                <source>Größe</source>
+            </trans-unit>
+            <trans-unit id="groups.style" xml:space="preserve">
+                <source>Stil</source>
+            </trans-unit>
+            <trans-unit id="groups.marker" xml:space="preserve">
+                <source>Marker</source>
+            </trans-unit>
+            <trans-unit id="groups.maptype" xml:space="preserve">
+                <source>Kartentyp</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
