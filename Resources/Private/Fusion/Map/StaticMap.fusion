@@ -20,12 +20,11 @@ prototype(Jonnitto.GoogleMaps:StaticMap) < prototype(Neos.Fusion:Tag) {
     markerCustomIconURIpart = ${q(node).property('markerCustomIcon') ? 'icon%3A' +  String.rawUrlEncode(q(node).property('markerCustomIcon')) : ''}
 
     visibleLocationsURIpart = ${q(node).property('visibleLocations') ? String.rawUrlEncode(q(node).property('visibleLocations')) : ''}
-    poiURIpart = ${q(node).property('poi') ? String.rawUrlEncode('poi|element:labels|visibility:off') : ''}
 
     marker = ${q(node).property('markerLocation') ? '&markers=' + this.markerSizeURIpart + this.markerColorURIpart + this.markerLabelURIpart + this.markerCustomIconURIpart + '%7C' + this.markerLocation: ''}
     finalmarker = ${q(node).property('markerCustomIcon') && q(node).property('markerLocation') ? '&markers=' + this.markerCustomIconURIpart + '%7C' + this.markerLocation : this.marker}
     visible = ${q(node).property('visibleLocations') ? '&visible=' + this.visibleLocationsURIpart : ''}
-    poi = ${q(node).property('poi') ? '' : '&style=' + this.poiURIpart}
+    poi = ${q(node).property('poi') ? '' : '&style=' + String.rawUrlEncode('poi|element:labels|visibility:off')}
 
     @context {
         configuration = ${this.configuration}
