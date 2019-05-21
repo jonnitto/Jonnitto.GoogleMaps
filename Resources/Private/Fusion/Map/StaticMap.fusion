@@ -3,24 +3,27 @@ prototype(Jonnitto.GoogleMaps:StaticMap) < prototype(Neos.Fusion:Tag) {
     APIKey = ${this.configuration.APIKey}
     editable = true
 
-    mapLocation = ${Jonnitto.GoogleMaps.urlencodeValue(String.trim(q(node).property('mapLocation')))}
-    zoom = ${q(node).property('zoom')}
-    scale = ${q(node).property('scale')}
+    mapLocation = ${String.rawUrlEncode(String.trim(q(node).property('mapLocation')))}
+    zoom = ${String.rawUrlEncode(q(node).property('zoom'))}
+    scale = ${String.rawUrlEncode(q(node).property('scale'))}
 
-    maptype = ${Jonnitto.GoogleMaps.urlencodeValue(q(node).property('maptype'))}
+    maptype = ${String.rawUrlEncode(q(node).property('maptype'))}
 
-    markerLocation = ${Jonnitto.GoogleMaps.urlencodeValue(q(node).property('markerLocation'))}
-    markerSize = ${q(node).property('markerSize')}
+    markerLocation = ${String.rawUrlEncode(q(node).property('markerLocation'))}
+    markerSize = ${String.rawUrlEncode(q(node).property('markerSize'))}
     markerSizeURIpart = ${q(node).property('markerSize') ? 'size%3A' + q(node).property('markerSize') : ''}
     markerColor = ${q(node).property('markerColor')}
-    markerColorURIpart = ${q(node).property('markerColor') ? '%7Ccolor%3A' +  Jonnitto.GoogleMaps.urlencodeValue(q(node).property('markerColor')) : ''}
+    markerColorURIpart = ${q(node).property('markerColor') ? '%7Ccolor%3A' +  String.rawUrlEncode(q(node).property('markerColor')) : ''}
     markerLabel = ${q(node).property('markerLabel')}
-    markerLabelURIpart = ${q(node).property('markerLabel') ? '%7Clabel%3A' +  Jonnitto.GoogleMaps.urlencodeValue(q(node).property('markerLabel')) : ''}
+    markerLabelURIpart = ${q(node).property('markerLabel') ? '%7Clabel%3A' +  String.rawUrlEncode(q(node).property('markerLabel')) : ''}
     markerCustomIcon = ${q(node).property('markerCustomIcon')}
-    markerCustomIconURIpart = ${q(node).property('markerCustomIcon') ? 'icon%3A' +  Jonnitto.GoogleMaps.urlencodeValue(q(node).property('markerCustomIcon')) : ''}
+    markerCustomIconURIpart = ${q(node).property('markerCustomIcon') ? 'icon%3A' +  String.rawUrlEncode(q(node).property('markerCustomIcon')) : ''}
+    visibleLocations = ${q(node).property('visibleLocations')}
+    visibleLocationsURIpart = ${q(node).property('visibleLocations') ? String.rawUrlEncode(q(node).property('visibleLocations')) : ''}
 
     marker = ${q(node).property('markerLocation') ? '&markers=' + this.markerSizeURIpart + this.markerColorURIpart + this.markerLabelURIpart + this.markerCustomIconURIpart + '%7C' + this.markerLocation: ''}
     finalmarker = ${q(node).property('markerCustomIcon') && q(node).property('markerLocation') ? '&markers=' + this.markerCustomIconURIpart + '%7C' + this.markerLocation : this.marker}
+    visible = ${q(node).property('visibleLocations') ? this.visibleLocationsURIpart : ''}
 
     @context {
         configuration = ${this.configuration}
@@ -37,6 +40,7 @@ prototype(Jonnitto.GoogleMaps:StaticMap) < prototype(Neos.Fusion:Tag) {
             + '&size=' + this.width + 'x' + this.height
             + '&scale=' + this.scale
             + '&maptype=' + this.maptype
+            + '&visible=' + this.visible
             + this.finalmarker
         }
     }

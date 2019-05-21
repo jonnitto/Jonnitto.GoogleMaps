@@ -54,21 +54,12 @@ class GoogleMapsUriBuilder implements ProtectedContextAwareInterface {
        return 'Static Maps URI Builder error - see log for details.';
     }
 
-
-    /***
-     * @param string $value value to be urlencoded
-     * @return mixed encoded value
+    /**
+     * All methods are considered safe, i.e. can be executed from within Eel
+     *
+     * @param string $methodName
+     * @return boolean
      */
-    public function urlencodeValue(string $value){
-        return urlencode($value);
-    }
-
-       /**
-        * All methods are considered safe, i.e. can be executed from within Eel
-        *
-        * @param string $methodName
-        * @return boolean
-        */
     public function allowsCallOfMethod($methodName) {
         return TRUE;
     }

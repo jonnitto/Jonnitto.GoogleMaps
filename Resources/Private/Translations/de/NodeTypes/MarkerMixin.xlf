@@ -41,6 +41,12 @@
             <trans-unit id="properties.markerCustomIcon.ui.help.message" xml:space="preserve">
                 <source>Sie können ein Symbol angeben, das von der angegebenen URL geladen wird. Mit URL Kürzungsservices erstellte Angaben sind erlaubt, wie beispielsweise durch https://goo.gl generiert. Wenn Sie ein eigenes Symbol verwenden, werden die Marker Einstellungen überschrieben.</source>
             </trans-unit>
+            <trans-unit id="properties.visibleLocations" xml:space="preserve">
+                <source>Sichtbare Standorte</source>
+            </trans-unit>
+            <trans-unit id="properties.visibleLocations.ui.help.message" xml:space="preserve">
+                <source>Wenn Sie hier einen oder mehrere Standorte (getrennt durch das | Zeichen) angeben, werden alle bis auf die von Ihnen angegebenen Standorte ausgeblendet.</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
