@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Jonnitto.GoogleMaps" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="properties.markerLocation" xml:space="preserve">
+                <source>Location</source>
+            </trans-unit>
+            <trans-unit id="properties.markerLocation.ui.help.message" xml:space="preserve">
+                <source>You can enter the location with coordinates (latitude, longitude) or with an address.</source>
+            </trans-unit>
+            <trans-unit id="properties.markerSize" xml:space="preserve">
+                <source>Marker size</source>
+            </trans-unit>
+            <trans-unit id="properties.markerSize.selectBoxEditor.values.tiny" xml:space="preserve">
+                <source>Tiny</source>
+            </trans-unit>
+            <trans-unit id="properties.markerSize.selectBoxEditor.values.small" xml:space="preserve">
+                <source>Small</source>
+            </trans-unit>
+            <trans-unit id="properties.markerSize.selectBoxEditor.values.mid" xml:space="preserve">
+                <source>Mid</source>
+            </trans-unit>
+            <trans-unit id="properties.markerSize.selectBoxEditor.placeholder" xml:space="preserve">
+                <source>Choose a marker size</source>
+            </trans-unit>
+            <trans-unit id="properties.markerColor" xml:space="preserve">
+                <source>Color</source>
+            </trans-unit>
+            <trans-unit id="properties.markerColor.ui.help.message" xml:space="preserve">
+                <source>You can enter a 24-bit color (example: color=0xFFFFCC) or a predefined color from the set {black, brown, green, purple, yellow, blue, gray, orange, red, white}.</source>
+            </trans-unit>
+            <trans-unit id="properties.markerLabel" xml:space="preserve">
+                <source>Label</source>
+            </trans-unit>
+            <trans-unit id="properties.markerLabel.ui.help.message" xml:space="preserve">
+                <source>You can enter a single uppercase alphanumeric character from the set {A-Z, 0-9}.</source>
+            </trans-unit>
+            <trans-unit id="properties.markerCustomIcon" xml:space="preserve">
+                <source>Custom icon</source>
+            </trans-unit>
+            <trans-unit id="properties.markerCustomIcon.ui.help.message" xml:space="preserve">
+                <source>You can specify an icon to use using a URL. You can use URLs created by URL-shortening services such as https://goo.gl. Using a custom icon will take precedence over marker stylings</source>
+            </trans-unit>
+            <trans-unit id="properties.visibleLocations" xml:space="preserve">
+                <source>Visible locations</source>
+            </trans-unit>
+            <trans-unit id="properties.visibleLocations.ui.help.message" xml:space="preserve">
+                <source>You can specify one or more locations (seperated by the | symbol). If one or more locations are assigned this way, all other locations on the map are set invisible.</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

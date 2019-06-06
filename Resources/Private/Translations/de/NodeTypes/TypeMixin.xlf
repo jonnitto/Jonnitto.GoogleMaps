@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Jonnitto.GoogleMaps" source-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="properties.maptype" xml:space="preserve">
+                <source>Kartentyp</source>
+            </trans-unit>
+            <trans-unit id="properties.maptype.selectBoxEditor.placeholder" xml:space="preserve">
+                <source>Standardeinstellungen</source>
+            </trans-unit>
+            <trans-unit id="properties.maptype.selectBoxEditor.values.roadmap" xml:space="preserve">
+                <source>Straßenkarte</source>
+            </trans-unit>
+            <trans-unit id="properties.maptype.selectBoxEditor.values.satellite" xml:space="preserve">
+                <source>Satellit</source>
+            </trans-unit>
+            <trans-unit id="properties.maptype.selectBoxEditor.values.terrain" xml:space="preserve">
+                <source>Terrain</source>
+            </trans-unit>
+            <trans-unit id="properties.maptype.selectBoxEditor.values.hybrid" xml:space="preserve">
+                <source>Hybrid</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

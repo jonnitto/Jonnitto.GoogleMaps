@@ -23,3 +23,40 @@
           label: i18n
           position: 30
           icon: icon-street-view
+
+'Jonnitto.GoogleMaps:StaticMap':
+  superTypes:
+      'Neos.Neos:Content': true
+      'Jonnitto.GoogleMaps:MapLocationMixin': true
+      'Jonnitto.GoogleMaps:ZoomMixin': true
+      'Jonnitto.GoogleMaps:SizeMixin': true
+      'Jonnitto.GoogleMaps:StyleMixin': true
+      'Jonnitto.GoogleMaps:MarkerMixin': true
+      'Jonnitto.GoogleMaps:TypeMixin': true
+  ui:
+    label: i18n
+    icon: icon-map-pin
+    position: 2000
+    inspector:
+      groups:
+        coordinates:
+          label: i18n
+          position: 10
+          icon: icon-map
+        style:
+          label: i18n
+          position: 12
+          icon: icon-paint-brush
+        marker:
+          label: i18n
+          position: 15
+          icon: icon-map-marker
+        size:
+          label: i18n
+          position: 20
+          icon: icon-arrows-h
+        maptype:
+          label: i18n
+          position: 25
+          icon: icon-road
+

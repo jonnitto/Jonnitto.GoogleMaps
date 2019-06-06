@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Jonnitto.GoogleMaps" source-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="properties.markerLocation" xml:space="preserve">
+                <source>Standort</source>
+            </trans-unit>
+            <trans-unit id="properties.markerLocation.ui.help.message" xml:space="preserve">
+                <source>Sie können den Standort mit der Hilfe von Längen- und Breitengraden oder mit einer Adresse angeben.</source>
+            </trans-unit>
+            <trans-unit id="properties.markerSize" xml:space="preserve">
+                <source>Marker Größe</source>
+            </trans-unit>
+            <trans-unit id="properties.markerSize.selectBoxEditor.values.tiny" xml:space="preserve">
+                <source>Sehr klein</source>
+            </trans-unit>
+            <trans-unit id="properties.markerSize.selectBoxEditor.values.small" xml:space="preserve">
+                <source>Klein</source>
+            </trans-unit>
+            <trans-unit id="properties.markerSize.selectBoxEditor.values.mid" xml:space="preserve">
+                <source>Mittelgroß</source>
+            </trans-unit>
+            <trans-unit id="properties.markerSize.selectBoxEditor.placeholder" xml:space="preserve">
+                <source>Wählen Sie eine Marker Größe</source>
+            </trans-unit>
+            <trans-unit id="properties.markerColor" xml:space="preserve">
+                <source>Farbe</source>
+            </trans-unit>
+            <trans-unit id="properties.markerColor.ui.help.message" xml:space="preserve">
+                <source>Sie können eine 24-bit Farbe wählen (Beispiel: color=0xFFFFCC) oder eine vordefinierte Farbe aus dem Set {black, brown, green, purple, yellow, blue, gray, orange, red, white} verwenden.</source>
+            </trans-unit>
+            <trans-unit id="properties.markerLabel" xml:space="preserve">
+                <source>Beschriftung</source>
+            </trans-unit>
+            <trans-unit id="properties.markerLabel.ui.help.message" xml:space="preserve">
+                <source>Sie können ein einzelnes alphanumerisches Zeichen wählen: {A-Z, 0-9}.</source>
+            </trans-unit>
+            <trans-unit id="properties.markerCustomIcon" xml:space="preserve">
+                <source>Eigenes Symbol</source>
+            </trans-unit>
+            <trans-unit id="properties.markerCustomIcon.ui.help.message" xml:space="preserve">
+                <source>Sie können ein Symbol angeben, das von der angegebenen URL geladen wird. Mit URL Kürzungsservices erstellte Angaben sind erlaubt, wie beispielsweise durch https://goo.gl generiert. Wenn Sie ein eigenes Symbol verwenden, werden die Marker Einstellungen überschrieben.</source>
+            </trans-unit>
+            <trans-unit id="properties.visibleLocations" xml:space="preserve">
+                <source>Sichtbare Standorte</source>
+            </trans-unit>
+            <trans-unit id="properties.visibleLocations.ui.help.message" xml:space="preserve">
+                <source>Wenn Sie hier einen oder mehrere Standorte (getrennt durch das | Zeichen) angeben, werden alle bis auf die von Ihnen angegebenen Standorte ausgeblendet.</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

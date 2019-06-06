@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Jonnitto.GoogleMaps" source-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="properties.width" xml:space="preserve">
+                <source>Breite</source>
+            </trans-unit>
+            <trans-unit id="properties.height" xml:space="preserve">
+                <source>Höhe</source>
+            </trans-unit>
+            <trans-unit id="properties.scale" xml:space="preserve">
+                <source>Skalierung</source>
+            </trans-unit>
+            <trans-unit id="properties.scale.ui.help.message" xml:space="preserve">
+                <source>Der Skalierungswert wird mit der Größenangabe multipliziert um die tatsächliche Ausgabegröße des Bildes in Pixel zu berechnen, ohne die Anzeigefläche der Karte zu verändern. (Der Standardskalierungswert ist 1; Angaben von 1, 2 und (nur für Google Maps API Premium Plan Kunden) 4.</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,95 @@
+prototype(Jonnitto.GoogleMaps:StaticMap) < prototype(Neos.Fusion:Tag) {
+    configuration = ${Configuration.setting('Jonnitto.GoogleMaps')}
+    APIKey = ${this.configuration.APIKey}
+    editable = true
+
+    mapLocation = ${String.rawUrlEncode(String.trim(q(node).property('mapLocation')))}
+    zoom = ${String.rawUrlEncode(q(node).property('zoom'))}
+    scale = ${String.rawUrlEncode(q(node).property('scale'))}
+
+    maptype = ${String.rawUrlEncode(q(node).property('maptype'))}
+
+    markerLocation = ${String.rawUrlEncode(q(node).property('markerLocation'))}
+    markerSize = ${String.rawUrlEncode(q(node).property('markerSize'))}
+    markerSizeURIpart = ${q(node).property('markerSize') ? 'size%3A' + q(node).property('markerSize') : ''}
+    markerColor = ${q(node).property('markerColor')}
+    markerColorURIpart = ${q(node).property('markerColor') ? '%7Ccolor%3A' +  String.rawUrlEncode(q(node).property('markerColor')) : ''}
+    markerLabel = ${q(node).property('markerLabel')}
+    markerLabelURIpart = ${q(node).property('markerLabel') ? '%7Clabel%3A' +  String.rawUrlEncode(q(node).property('markerLabel')) : ''}
+    markerCustomIcon = ${q(node).property('markerCustomIcon')}
+    markerCustomIconURIpart = ${q(node).property('markerCustomIcon') ? 'icon%3A' +  String.rawUrlEncode(q(node).property('markerCustomIcon')) : ''}
+
+    visibleLocationsURIpart = ${q(node).property('visibleLocations') ? String.rawUrlEncode(q(node).property('visibleLocations')) : ''}
+
+    marker = ${q(node).property('markerLocation') ? '&markers=' + this.markerSizeURIpart + this.markerColorURIpart + this.markerLabelURIpart + this.markerCustomIconURIpart + '%7C' + this.markerLocation: ''}
+    finalmarker = ${q(node).property('markerCustomIcon') && q(node).property('markerLocation') ? '&markers=' + this.markerCustomIconURIpart + '%7C' + this.markerLocation : this.marker}
+    visible = ${q(node).property('visibleLocations') ? '&visible=' + this.visibleLocationsURIpart : ''}
+    poi = ${q(node).property('poi') ? '' : '&style=' + String.rawUrlEncode('feature:poi|element:labels|visibility:off')}
+
+    @context {
+        configuration = ${this.configuration}
+        APIKey = ${this.APIKey}
+        mapLocation = ${this.mapLocation}
+        alertLinkStyle = 'color:#fff;text-decoration:underline'
+        editable = ${this.editable}
+
+        requestURI = ${
+            'https:'
+            + String.replace(Configuration.setting('Jonnitto.GoogleMaps.googleStaticMapsAPI'), '{APIKey}',Configuration.setting('Jonnitto.GoogleMaps.APIKey'))
+            + '&center=' + this.mapLocation
+            + '&zoom=' + this.zoom
+            + '&size=' + this.width + 'x' + this.height
+            + '&scale=' + this.scale
+            + '&maptype=' + this.maptype
+            + this.visible
+            + this.poi
+            + this.finalmarker
+        }
+    }
+
+    attributes.class = Neos.Fusion:RawArray {
+        nodeType = 'jonnitto-googlestaticmap'
+        container = ${configuration.cssClasses.container}
+    }
+
+    content = Neos.Fusion:Case {
+        noApiKey {
+            condition = ${APIKey ? false : true}
+            renderer = Carbon.Notification:Backend {
+                type = 'alert'
+                content = ${Translation.translate('noAPIKey', null, {style:alertLinkStyle,link:'https://console.developers.google.com/apis/api/maps_backend'}, null, 'Jonnitto.GoogleMaps')}
+            }
+        }
+        noAddress {
+            condition = ${mapLocation ? false : true}
+            renderer = Carbon.Notification:Backend {
+                type = 'warning'
+                content = ${Translation.translate('noAddress', null, {style:alertLinkStyle,link:'https://console.developers.google.com/apis/api/maps_backend'}, null, 'Jonnitto.GoogleMaps')}
+            }
+        }
+        hasAddress {
+            condition = true
+
+            renderer = Neos.Fusion:Array {
+                staticmap = Neos.Fusion:Tag {
+                    @if.hasMap = ${mapLocation ? true : false}
+                    tagName = 'img'
+
+                    attributes {
+                        class = Neos.Fusion:RawArray {
+                            google = ${configuration.cssClasses.map}
+                        }
+                        src = ${Jonnitto.GoogleMaps.buildStaticMapsUri(requestURI)}
+                    }
+                }
+            }
+        }
+    }  
+
+    @process.contentElementWrapping {
+        @if.editable = ${editable}
+        expression = Neos.Neos:ContentElementWrapping
+        @position = 'end 999999999'
+    }
+    @exceptionHandler = 'Neos\\Neos\\Fusion\\ExceptionHandlers\\NodeWrappingHandler'
+}
