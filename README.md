@@ -9,7 +9,7 @@
 
 # Jonnitto.GoogleMaps Package for Neos CMS
 
-With this package you can include Google Maps and / or Streetview in a simple way into [Neos CMS](https://www.neos.io). Contributions are very welcome!
+With this package you can include Google Maps and / or Streetview and even Static Maps in a simple way into [Neos CMS](https://www.neos.io). Contributions are very welcome!
 
 ## Installation
 
