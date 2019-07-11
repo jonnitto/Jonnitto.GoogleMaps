@@ -15,7 +15,16 @@
         }
     },
     "archive": {
-        "exclude": [".editorconfig", ".gitignore", ".github", "package.json", "CODE_OF_CONDUCT.md"]
+        "exclude": [
+            ".editorconfig",
+            ".gitattributes",
+            ".github",
+            ".gitignore",
+            "CODE_OF_CONDUCT.md",
+            "package.json",
+            "postcss.config.js",
+            "yarn.lock"
+        ]
     },
     "authors": [
         {

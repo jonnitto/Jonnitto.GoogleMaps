@@ -6,16 +6,26 @@
         "type": "git",
         "url": "git://github.com/jonnitto/Jonnitto.GoogleMaps.git"
     },
+    "browserslist": [
+      "> 0.5%",
+      "last 2 versions",
+      "Firefox ESR",
+      "not ie <= 10",
+      "not ie_mob <= 10",
+      "not bb <= 10",
+      "not op_mob <= 12.1"
+    ],
     "devDependencies": {
-        "cssnano-cli": "latest",
-        "node-sass": "latest",
+        "autoprefixer": "^9.6.0",
+        "cssnano": "^4.1.10",
+        "postcss-cli": "^6.1.2",
+        "node-sass": "4.12.0",
         "uglify-js2": "latest"
     },
     "scripts": {
-        "js":
-            "uglifyjs2 Resources/Private/Javascripts/GoogleMaps.js --mangle --compress --output Resources/Public/Main.js && uglifyjs2 Resources/Private/Javascripts/Backend.js --mangle --compress --output Resources/Public/Backend.js",
-        "css":
-            "node-sass Resources/Private/Styles/GoogleMaps.scss Resources/Public/Main.css | cssnano Resources/Public/Main.css Resources/Public/Main.css  --autoprefixer.add true --autoprefixer.browsers: '> 1%' --no-zindex --discardComments.removeAll true ",
-        "start": "npm run css && npm run js"
+        "build:js": "uglifyjs2 Resources/Private/Javascripts/GoogleMaps.js --mangle --compress --output Resources/Public/Main.js && uglifyjs2 Resources/Private/Javascripts/Backend.js --mangle --compress --output Resources/Public/Backend.js",
+        "build:css": "node-sass Resources/Private/Styles/GoogleMaps.scss Resources/Public/Main.css | postcss Resources/Public/Main.css -r",
+        "build": "yarn build:css && yarn build:js",
+        "start": "yarn build"
     }
 }
