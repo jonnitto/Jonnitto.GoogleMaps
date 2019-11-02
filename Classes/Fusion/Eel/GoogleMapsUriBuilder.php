@@ -3,13 +3,15 @@ namespace Jonnitto\GoogleMaps\Fusion\Eel;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\Eel\ProtectedContextAwareInterface;
+use Neos\Flow\Log\Utility\LogEnvironment;
+use Psr\Log\LoggerInterface;
 
 
 class GoogleMapsUriBuilder implements ProtectedContextAwareInterface {
 
     /**
      * @Flow\Inject
-     * @var \Neos\Flow\Log\SystemLoggerInterface
+     * @var LoggerInterface
      */
     protected $systemLogger;
 
@@ -50,7 +52,7 @@ class GoogleMapsUriBuilder implements ProtectedContextAwareInterface {
             return $uri['scheme'] . "://" . $uri['host'] . $uri['path'] . "?" . $uri['query'] . "&signature=" . $signature;
         }
 
-       $this->systemLogger->log('Error while converting URI for Google static maps.', LOG_WARNING, $uri);
+       $this->systemLogger->warning('Error while converting URI for Google static maps.', LogEnvironment::fromMethodName(__METHOD__));
        return 'Static Maps URI Builder error - see log for details.';
     }
 
