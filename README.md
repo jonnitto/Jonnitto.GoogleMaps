@@ -21,6 +21,61 @@ composer require jonnitto/googlemaps --no-update
 
 The --no-update command prevent the automatic update of the dependencies. After the package was added to your theme composer.json, go back to the root of the Neos installation and run composer update. Et voilà! Your desired package is now installed correctly.
 
+## Modification
+
+In the Javscript of the package, following code gets executed:
+
+```js
+if (typeof GoogleMapsFunction === "function") {
+    GoogleMapsFunction();
+}
+
+if (typeof GoogleMapsOptions === "object") {
+    extend(object.Map.options, GoogleMapsOptions);
+}
+
+if (typeof GoogleStreetviewOptions === "object") {
+    extend(object.Streetview.options, GoogleStreetviewOptions);
+}
+```
+
+Like that, you can do almost everything with the map. 
+
+### Example: Custom pin
+
+```js
+window.GoogleMapsFunction () => {
+    window.GoogleMapsPin = {
+        icon: {
+            url: '/YOUR/PATH/TO/THE/MapPin.png',
+            anchor: new google.maps.Point(10, 50),
+            scaledSize: new google.maps.Size(22, 40)
+        }
+    };
+}
+```
+
+### Example: Custom map options
+
+```js
+window.GoogleMapsOptions = {
+    streetViewControl: false,
+    mapTypeControl: false,
+    scrollwheel: false,
+    styles: [
+        {
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#f5f5f5"
+                }
+            ]
+        }
+    ]
+};
+```
+
+
 ## License
 
 Licensed under MIT, see [LICENSE](LICENSE)
