@@ -23,9 +23,20 @@ The --no-update command prevent the automatic update of the dependencies. After 
 
 ## Modification
 
+* To set the options, use the global variable `GoogleMapsOptions`
+* To set the marker pin, use the global variable `GoogleMapsPin`
+* To include functions, use `GoogleMapsFunction`
+
 In the Javscript of the package, following code gets executed:
 
 ```js
+
+if (typeof GoogleMapsPin === "string") {
+    marker.icon = GoogleMapsPin;
+} else if (typeof GoogleMapsPin === "object") {
+    extend(marker, GoogleMapsPin);
+}
+        
 if (typeof GoogleMapsFunction === "function") {
     GoogleMapsFunction();
 }
@@ -53,6 +64,12 @@ window.GoogleMapsFunction () => {
         }
     };
 }
+```
+
+or
+
+```js
+window.GoogleMapsPin = '/YOUR/PATH/TO/THE/MapPin.png';
 ```
 
 ### Example: Custom map options
