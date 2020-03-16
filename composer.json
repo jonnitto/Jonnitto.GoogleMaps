@@ -1,9 +1,14 @@
 {
     "name": "jonnitto/googlemaps",
+    "homepage": "https://github.com/jonnitto/Jonnitto.GoogleMaps",
     "type": "neos-plugin",
     "description": "Google Maps as Content Element",
     "keywords": ["flow", "neos", "map", "googlemaps", "contentelement"],
     "license": "MIT",
+    "support": {
+        "issues": "https://github.com/jonnitto/Jonnitto.GoogleMaps/issues",
+        "source": "https://github.com/jonnitto/Jonnitto.GoogleMaps"
+    },
     "require": {
         "neos/neos": "^4.1 || ^5.0",
         "carbon/condition": "^1.1",

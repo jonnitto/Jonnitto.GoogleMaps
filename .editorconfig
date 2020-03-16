@@ -3,9 +3,7 @@
 # top-most EditorConfig file
 root = true
 
-
 # Default
-
 [*]
 charset = utf-8
 end_of_line = lf
@@ -26,3 +24,7 @@ indent_size = 1
 
 [*.{note,md,edit,read}]
 trim_trailing-whitespace = false
+
+[Makefile]
+indent_style = tab
+indent_size = 1
