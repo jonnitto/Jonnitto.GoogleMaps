@@ -2,12 +2,12 @@
 // To set the options, use the global variable GoogleMapsOptions
 // To set the marker pin, use the global variable GoogleMapsPin
 // To include functions, use GoogleMapsFunction
-window.initJonnittoGoogleMaps = function() {
-    var feedback = [];
-    var initClass = 'jonnitto-googlemaps-init';
+window.initJonnittoGoogleMaps = function () {
+    let feedback = [];
+    const initClass = 'jonnitto-googlemaps-init';
 
     // We store eveything in one Object, so it's easier to include functions
-    var object = {
+    let object = {
         Map: {
             elements: document.querySelectorAll('.jonnitto-googlemaps-mapview'),
             options: {
@@ -15,20 +15,20 @@ window.initJonnittoGoogleMaps = function() {
                 mapTypeControl: true,
                 streetViewControl: false,
                 zoomControl: true,
-                scrollwheel: false
-            }
+                scrollwheel: false,
+            },
         },
         Streetview: {
             elements: document.querySelectorAll('.jonnitto-googlemaps-streetview'),
             options: {
-                scrollwheel: false
-            }
-        }
+                scrollwheel: false,
+            },
+        },
     };
 
     // Check if String is a Float
     function isFloat(val) {
-        var floatRegex = /^-?\d+(?:[.,]\d*?)?$/;
+        const floatRegex = /^-?\d+(?:[.,]\d*?)?$/;
         if (!floatRegex.test(val)) {
             return false;
         }
@@ -40,7 +40,7 @@ window.initJonnittoGoogleMaps = function() {
     }
 
     function extend(object, inject) {
-        for (var key in inject) {
+        for (let key in inject) {
             if (inject.hasOwnProperty(key)) {
                 object[key] = inject[key];
             }
@@ -49,7 +49,7 @@ window.initJonnittoGoogleMaps = function() {
     }
 
     function getNumber(element, value) {
-        var number = parseInt(element.getAttribute('data-' + value));
+        const number = parseInt(element.getAttribute('data-' + value));
         if (typeof number === 'number' && number) {
             return number;
         }
@@ -61,19 +61,19 @@ window.initJonnittoGoogleMaps = function() {
     }
 
     function getLocation(element, callback) {
-        var address = element.getAttribute('data-location');
-        var split = address.split(',');
-        var coordinates;
+        const address = element.getAttribute('data-location');
+        const split = address.split(',');
+        let coordinates;
 
         function successful(location) {
-            element.className += ' ' + initClass;
+            element.classList.add(initClass);
             callback({ element: element, location: location });
         }
 
         function failed(status) {
-            if (document.body.className.indexOf('neos-backend') > -1) {
+            if (document.body.classList.contains('neos-backend')) {
                 // We are in the backend of Neos
-                var sentence = 'Geocode was not successful';
+                const sentence = 'Geocode was not successful';
                 if (status) {
                     alert(sentence + ' for the following reason: ' + status);
                 } else {
@@ -90,9 +90,9 @@ window.initJonnittoGoogleMaps = function() {
             coordinates = new google.maps.Geocoder();
             coordinates.geocode(
                 {
-                    address: address
+                    address: address,
                 },
-                function(results, status) {
+                function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
                         successful(results[0].geometry.location);
                     } else {
@@ -105,18 +105,18 @@ window.initJonnittoGoogleMaps = function() {
     }
 
     function renderMap(options) {
-        var mapOptions = object.Map.options;
-        var zoom = getNumber(options.element, 'zoom');
-        var content = options.element.content || null;
+        let mapOptions = object.Map.options;
+        const zoom = getNumber(options.element, 'zoom');
+        let content = options.element.content || null;
         if (content === null) {
             content = options.element.innerHTML.replace(/^\s+|\s+$/g, '') || false;
             options.element.content = content;
         }
-        var storage = {
+        let storage = {
             content: content,
             LatLng: options.location,
             lat: options.location.lat(),
-            lng: options.location.lng()
+            lng: options.location.lng(),
         };
 
         if (zoom) {
@@ -127,16 +127,16 @@ window.initJonnittoGoogleMaps = function() {
 
         if (storage.content) {
             storage.infowindow = new google.maps.InfoWindow({
-                content: storage.content
+                content: storage.content,
             });
         }
 
         // define marker
-        var marker = {
+        let marker = {
             position: storage.LatLng,
             title: options.element.getAttribute('data-marker-title'),
             map: storage.map,
-            draggable: false
+            draggable: false,
         };
 
         if (typeof GoogleMapsPin === 'string') {
@@ -153,14 +153,14 @@ window.initJonnittoGoogleMaps = function() {
 
         // jshint loopfunc:true
         if (typeof window.addEventListener === 'function') {
-            (function(_storage) {
-                google.maps.event.addListener(_storage.map, 'bounds_changed', function() {
+            (function (_storage) {
+                google.maps.event.addListener(_storage.map, 'bounds_changed', function () {
                     _storage.center = _storage.map.getCenter();
                 });
-                google.maps.event.addDomListener(window, 'resize', function() {
+                google.maps.event.addDomListener(window, 'resize', function () {
                     _storage.map.setCenter(_storage.center);
                 });
-                google.maps.event.addListener(_storage.marker, 'click', function() {
+                google.maps.event.addListener(_storage.marker, 'click', function () {
                     if (_storage.content) {
                         _storage.infowindow.open(_storage.map, _storage.marker);
                     } else {
@@ -173,17 +173,17 @@ window.initJonnittoGoogleMaps = function() {
     }
 
     function renderStreetview(options) {
-        var streetStorage = object.Streetview.options;
+        let streetStorage = object.Streetview.options;
         streetStorage.position = options.location;
         streetStorage.pov = {
             heading: getNumber(options.element, 'heading') || 0,
-            pitch: getNumber(options.element, 'pitch') || 0
+            pitch: getNumber(options.element, 'pitch') || 0,
         };
         new google.maps.StreetViewPanorama(options.element, streetStorage);
     }
 
-    for (var key in object) {
-        var num = object[key].elements.length;
+    for (let key in object) {
+        const num = object[key].elements.length;
         object[key].index = num;
         feedback[feedback.length] = num + ' ' + key + (num == 1 ? '' : 's') + ' found';
     }
@@ -200,18 +200,18 @@ window.initJonnittoGoogleMaps = function() {
         extend(object.Streetview.options, GoogleStreetviewOptions);
     }
 
-    for (var m = 0; m < object.Map.index; m++) {
-        var map = object.Map.elements[m];
+    for (let m = 0; m < object.Map.index; m++) {
+        const map = object.Map.elements[m];
 
-        if (map.className.indexOf(initClass) === -1) {
+        if (!map.classList.contains(initClass)) {
             getLocation(map, renderMap);
         }
     }
 
-    for (var s = 0; s < object.Streetview.index; s++) {
-        var streetview = object.Streetview.elements[s];
+    for (let s = 0; s < object.Streetview.index; s++) {
+        const streetview = object.Streetview.elements[s];
 
-        if (streetview.className.indexOf(initClass) === -1) {
+        if (!streetview.classList.contains(initClass)) {
             getLocation(streetview, renderStreetview);
         }
     }
