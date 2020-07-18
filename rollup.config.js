@@ -1,4 +1,4 @@
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import license from 'rollup-plugin-license';
 import composer from './composer.json';
@@ -13,45 +13,51 @@ export default [
     {
         input: 'Resources/Private/Javascripts/GoogleMaps.js',
         plugins: [
-            babel(),
+            babel({
+                exclude: 'node_modules/**',
+                babelHelpers: 'bundled',
+            }),
             terser({
                 output: {
-                    comments: false
-                }
+                    comments: false,
+                },
             }),
             license({
                 banner: {
                     content: BANNER_CONTENT,
-                    commentStyle: 'ignored'
-                }
-            })
+                    commentStyle: 'ignored',
+                },
+            }),
         ],
         output: {
             sourcemap: true,
             file: 'Resources/Public/Main.js',
-            format: 'iife'
-        }
+            format: 'iife',
+        },
     },
     {
         input: 'Resources/Private/Javascripts/Backend.js',
         plugins: [
-            babel(),
+            babel({
+                exclude: 'node_modules/**',
+                babelHelpers: 'bundled',
+            }),
             terser({
                 output: {
-                    comments: false
-                }
+                    comments: false,
+                },
             }),
             license({
                 banner: {
                     content: BANNER_CONTENT,
-                    commentStyle: 'ignored'
-                }
-            })
+                    commentStyle: 'ignored',
+                },
+            }),
         ],
         output: {
             sourcemap: true,
             file: 'Resources/Public/Backend.js',
-            format: 'iife'
-        }
-    }
+            format: 'iife',
+        },
+    },
 ];
