@@ -21,6 +21,16 @@ composer require jonnitto/googlemaps --no-update
 
 The --no-update command prevent the automatic update of the dependencies. After the package was added to your theme composer.json, go back to the root of the Neos installation and run composer update. Et voilà! Your desired package is now installed correctly.
 
+## Google API
+You'll need at least an API Key from Google, and if you want to use Static Maps, you need also a signing secret. [Read here how to get theese keys](https://developers.google.com/maps/documentation/maps-static/get-api-key)  
+You will need following APIs:
+
+* [Geocoding API](https://developers.google.com/maps/documentation/geocoding)
+* [Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/)
+* For static maps you'll also need the [Maps Static API
+Go to Console
+](https://developers.google.com/maps/documentation/maps-static/)
+
 ## Modification
 
 * To set the options, use the global variable `GoogleMapsOptions`
