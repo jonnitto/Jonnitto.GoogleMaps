@@ -5,6 +5,8 @@ prototype(Jonnitto.GoogleMaps:StaticMap) < prototype(Neos.Fusion:Tag) {
 
     mapLocation = ${String.rawUrlEncode(String.trim(q(node).property('mapLocation')))}
     zoom = ${String.rawUrlEncode(q(node).property('zoom'))}
+    height = ${String.rawUrlEncode(q(node).property('height'))}
+    width = ${String.rawUrlEncode(q(node).property('width'))}
     scale = ${String.rawUrlEncode(q(node).property('scale'))}
 
     maptype = ${String.rawUrlEncode(q(node).property('maptype'))}
