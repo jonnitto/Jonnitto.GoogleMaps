@@ -59,14 +59,14 @@ prototype(Jonnitto.GoogleMaps:StaticMap) < prototype(Neos.Fusion:Tag) {
             condition = ${APIKey ? false : true}
             renderer = Carbon.Notification:Backend {
                 type = 'alert'
-                content = ${Translation.translate('noAPIKey', null, {style:alertLinkStyle,link:'https://console.developers.google.com/apis/api/maps_backend'}, null, 'Jonnitto.GoogleMaps')}
+                content = ${Translation.translate('noAPIKey', null, {style:alertLinkStyle,link:'https://console.developers.google.com/apis/api/maps_backend'}, 'Main', 'Jonnitto.GoogleMaps')}
             }
         }
         noAddress {
             condition = ${mapLocation ? false : true}
             renderer = Carbon.Notification:Backend {
                 type = 'warning'
-                content = ${Translation.translate('noAddress', null, {style:alertLinkStyle,link:'https://console.developers.google.com/apis/api/maps_backend'}, null, 'Jonnitto.GoogleMaps')}
+                content = ${Translation.translate('noAddress', null, {style:alertLinkStyle,link:'https://console.developers.google.com/apis/api/maps_backend'}, 'Main', 'Jonnitto.GoogleMaps')}
             }
         }
         hasAddress {
