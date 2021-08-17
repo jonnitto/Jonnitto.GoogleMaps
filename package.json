@@ -17,18 +17,17 @@
     "not op_mob <= 12.1"
   ],
   "devDependencies": {
-    "@babel/core": "^7.10.5",
-    "@babel/preset-env": "^7.10.4",
-    "@rollup/plugin-babel": "^5.1.0",
-    "autoprefixer": "^9.8.5",
-    "cssnano": "^4.1.10",
-    "postcss-banner": "^3.0.2",
-    "postcss-cli": "^7.1.1",
-    "postcss-sort-media-queries": "^1.31.21",
-    "rollup": "^2.22.0",
-    "rollup-plugin-license": "^2.1.0",
-    "rollup-plugin-terser": "^6.1.0",
-    "sass": "^1.26.10"
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "autoprefixer": "^10.3.1",
+    "cssnano": "^5.0.7",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
+    "postcss-sort-media-queries": "^3.11.12",
+    "rollup": "^2.56.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.38.0"
   },
   "scripts": {
     "js": "rollup --config",
