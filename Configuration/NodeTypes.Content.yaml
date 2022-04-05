@@ -26,13 +26,13 @@
 
 'Jonnitto.GoogleMaps:StaticMap':
   superTypes:
-      'Neos.Neos:Content': true
-      'Jonnitto.GoogleMaps:MapLocationMixin': true
-      'Jonnitto.GoogleMaps:ZoomMixin': true
-      'Jonnitto.GoogleMaps:SizeMixin': true
-      'Jonnitto.GoogleMaps:StyleMixin': true
-      'Jonnitto.GoogleMaps:MarkerMixin': true
-      'Jonnitto.GoogleMaps:TypeMixin': true
+    'Neos.Neos:Content': true
+    'Jonnitto.GoogleMaps:MapLocationMixin': true
+    'Jonnitto.GoogleMaps:ZoomMixin': true
+    'Jonnitto.GoogleMaps:SizeMixin': true
+    'Jonnitto.GoogleMaps:StyleMixin': true
+    'Jonnitto.GoogleMaps:MarkerMixin': true
+    'Jonnitto.GoogleMaps:TypeMixin': true
   ui:
     label: i18n
     icon: icon-map-pin
@@ -59,4 +59,3 @@
           label: i18n
           position: 25
           icon: icon-road
-

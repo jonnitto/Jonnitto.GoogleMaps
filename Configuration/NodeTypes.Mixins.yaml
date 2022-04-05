@@ -102,8 +102,8 @@
         label: i18n
         reloadPageIfChanged: true
         inspector:
-            group: style
-            position: 10
+          group: style
+          position: 10
 
 'Jonnitto.GoogleMaps:ZoomMixin':
   abstract: true
@@ -211,19 +211,19 @@
           group: streetview
           position: 100
     heading:
-        type: integer
-        defaultValue: 0
-        ui:
-          label: i18n
-          reloadPageIfChanged: true
-          inspector:
-            group: streetview
-            position: 300
-        validation:
-          'Neos.Neos/Validation/NumberRangeValidator':
-            minimum: 0
-            maximum: 359
-          'Neos.Neos/Validation/NotEmptyValidator': []
+      type: integer
+      defaultValue: 0
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: streetview
+          position: 300
+      validation:
+        'Neos.Neos/Validation/NumberRangeValidator':
+          minimum: 0
+          maximum: 359
+        'Neos.Neos/Validation/NotEmptyValidator': []
     pitch:
       type: integer
       defaultValue: 0
