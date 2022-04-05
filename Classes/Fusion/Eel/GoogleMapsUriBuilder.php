@@ -29,7 +29,7 @@ class GoogleMapsUriBuilder implements ProtectedContextAwareInterface
      * @param $uri string
      * @return string
      */
-    public function buildStaticMapsUri(string $uri)
+    public function buildStaticMapsUri(string $uri): string
     {
         // https://developers.google.com/maps/documentation/maps-static/get-api-key#dig-sig-key
 
@@ -67,6 +67,6 @@ class GoogleMapsUriBuilder implements ProtectedContextAwareInterface
      */
     public function allowsCallOfMethod($methodName)
     {
-        return TRUE;
+        return true;
     }
 }
