@@ -1,7 +1,7 @@
 {
   "name": "jonnitto.googlemaps",
   "description": "Render files for GoogleMaps",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "private": true,
   "repository": {
     "type": "git",

@@ -4,7 +4,7 @@
     "type": "neos-plugin",
     "description": "Google Maps as Content Element",
     "keywords": ["flow", "neos", "map", "googlemaps", "contentelement"],
-    "license": "MIT",
+    "license": "GPL-3.0",
     "support": {
         "issues": "https://github.com/jonnitto/Jonnitto.GoogleMaps/issues",
         "source": "https://github.com/jonnitto/Jonnitto.GoogleMaps"

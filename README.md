@@ -101,8 +101,3 @@ window.GoogleMapsOptions = {
     ]
 };
 ```
-
-
-## License
-
-Licensed under MIT, see [LICENSE](LICENSE)
