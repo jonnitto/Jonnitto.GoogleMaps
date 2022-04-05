@@ -10,7 +10,7 @@
         "source": "https://github.com/jonnitto/Jonnitto.GoogleMaps"
     },
     "require": {
-        "neos/neos": "^4.1 || ^5.0 || ^7.0",
+        "neos/neos": "^5.3 || ^7.0 || ^8.0",
         "carbon/condition": "^1.1 || ^2.0",
         "carbon/notification": "^1.2 || ^2.0"
     },
@@ -33,14 +33,13 @@
     },
     "authors": [
         {
-            "name": "Jon Uhlmann",
-            "email": "me@jonnitto.ch",
-            "homepage": "https://twitter.com/jonnitto",
-            "role": "Developer"
+        "name": "Jon Uhlmann",
+        "email": "hello@uhlmann.pro",
+        "homepage": "https://www.uhlmann.pro",
+        "role": "Developer"
         }
     ],
     "extra": {
-        "marketplace-account": "me@jonnitto.ch",
         "installer-name": "Jonnitto.GoogleMaps",
         "neos": {
             "package-key": "Jonnitto.GoogleMaps"
